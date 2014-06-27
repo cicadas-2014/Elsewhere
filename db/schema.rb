@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20140626220722) do
   create_table "countries", force: true do |t|
     t.string   "name"
     t.integer  "language_id"
+    t.float    "political_stability"
+    t.integer  "corruption_index"
+    t.string   "travel_warning"
+    t.string   "two_character_code"
+    t.string   "three_character_code"
+    t.string   "currency"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
