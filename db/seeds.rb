@@ -1,3 +1,8 @@
+require 'CSV'
+require 'iso_country_codes'
+require 'money'
+
+
 english = Language.create(name: "English")
 spanish = Language.create(name: "Spanish")
 french = Language.create(name: "French")
@@ -24,3 +29,18 @@ Image.create(country_id: france.id, url: "http://www.wallcoo.net/human/france/im
 Image.create(country_id: france.id, url: "http://traveldealslady.com/wp-content/uploads/Paris-France-travel-tour-traveltours-travel-agent-deals.jpg")
 Image.create(country_id: france.id, url: "http://www.francetravelguide.com/files/2011/11/3952987239_3b29d282b5_z.jpg")
 Image.create(country_id: france.id, url: "http://www.fodors.com/world/images/destinations/231/ile-de-france.jpg")
+
+poli_ratings = []
+data = File.open('db/politicalstability.csv')
+CSV.foreach(data) do |row|
+	poli_ratings << [row[0],row[1].gsub(/\t/,'').to_f]
+end
+
+fx = OpenExchangeRates::Rates.new
+
+###fetch currency code by country name using Iso Country Codes gem
+p currency_code = IsoCountryCodes.search_by_name('australia').first.currency
+###fetch name of currency for given currency code using Money gem
+p currency = Money.new(1000,currency_code).currency.name
+###fetch exchange rate for USD to any currency using Open Exchange Rates gem
+p fx.exchange_rate(:from => "USD", :to => currency_code) # => 0.808996
