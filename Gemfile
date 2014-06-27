@@ -41,6 +41,14 @@ gem 'spring',        group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'
-  gem 'capybara', '~> 2.2.1'
-  gem 'database_cleaner', '~> 1.2.0'
 end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'capybara'
+  gem 'selenium-webdriver', '~> 2.42.0'
+  gem 'database_cleaner'
+end
+
