@@ -1,8 +1,13 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+
 $(function () {
 
     Highcharts.setOptions({
         chart: {
-            backgroundColor: '#272822'
+            backgroundColor: 'white'
         },
         title: {
             style: {
@@ -17,8 +22,8 @@ $(function () {
             }
         },
         colorAxis: {
-            minColor: '#373832',
-            maxColor: '#baFF55'
+            minColor: '#19E8FF',
+            maxColor: '#0125E8'
         }
 
     });
@@ -28,9 +33,6 @@ $(function () {
         // Initiate the chart
         $('#container').highcharts('Map', {
             
-            title : {
-                text : 'Set general theme options'
-            },
 
             mapNavigation: {
                 enabled: true,
@@ -47,7 +49,7 @@ $(function () {
 
             legend: {
                 title: {
-                    text: 'Population density (/km²)'
+                    // text: 'Population density (/km²)'
                 }
             },
 
@@ -55,15 +57,12 @@ $(function () {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-                name: 'Population density',
+                name: 'Travel Info',
                 tooltip: {
-                    valueSuffix: '/km²'
+                    valueSuffix: ' likes'
                 }
             }]
         });
     });
 });
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
