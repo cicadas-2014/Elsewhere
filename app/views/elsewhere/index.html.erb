@@ -1,6 +1,5 @@
 <div id="directions"><p>Insert directions for app use here!</p></div>
 
-
 <div class="search">
 <%=form_tag "/search", method: "get" do %>
 <%=label_tag :search, "Search for a Country:" %></br>
@@ -9,13 +8,11 @@
 <%end%>
 </div>
 
-
 <div class="map">
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/data.js"></script>
 <script src="http://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
-
 
 <div id="container"></div>
 </div>
