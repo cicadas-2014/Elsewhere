@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
 	get '/:country_name', to: 'elsewhere#show', as: "country"
 
+
 end
