@@ -62,7 +62,22 @@ $(function () {
                     valueSuffix: ' likes'
                 }
             }]
+
         });
+
+        $('g.highcharts-series-group .highcharts-series path').on('click', function(e) {
+                e.preventDefault();
+                var target = $( event.target );
+                var request = $.ajax({
+                    url: '/results',
+                    type: 'get',
+                    data: $(target).attr("class")
+                });
+
+                request.done(function(response) {
+                    console.log(response);
+                })
+            })
     });
 });
 
