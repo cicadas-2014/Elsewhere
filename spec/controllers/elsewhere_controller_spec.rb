@@ -26,6 +26,5 @@ describe ElsewhereController do
         expect(response).to redirect_to home_path
       end
     end
-
   end
 end

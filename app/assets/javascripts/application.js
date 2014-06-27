@@ -4,7 +4,6 @@
 //= require_tree .
 
 $(function () {
-
     Highcharts.setOptions({
         chart: {
             backgroundColor: 'white'
@@ -29,10 +28,11 @@ $(function () {
     });
 
     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+        console.log(data);
 
         // Initiate the chart
         $('#container').highcharts('Map', {
-            
+
 
             mapNavigation: {
                 enabled: true,
@@ -41,15 +41,37 @@ $(function () {
                 }
             },
 
-            colorAxis: {
-                min: 1,
-                max: 1000,
-                type: 'logarithmic'
+        //     chart: {
+        //     events: {
+        //         click: function(event) {
+        //             alert ('x: '+ event.xAxis[0].value +', y: '+
+        //                   event.yAxis[0].value);
+        //         }
+        //     }        
+        // },
+
+        colorAxis: {
+            min: 1,
+            max: 1000,
+            type: 'logarithmic'
+        },
+
+        legend: {
+            title: {
+                    // text: 'Population density (/km²)'
+                }
             },
 
-            legend: {
-                title: {
-                    // text: 'Population density (/km²)'
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    events: {
+                        click: function(event) {
+                            console.log(event.point.name);
+                            $("#search").val(event.point.name);
+                            $("#searchbutt").click();
+                        }
+                    }
                 }
             },
 
@@ -63,6 +85,12 @@ $(function () {
                 }
             }]
         });
+});
+
+$(".map").click(function(event) {
+    console.log("hello");
+        // alert(event.target.id+" and "+event.target.class);
     });
+
 });
 
