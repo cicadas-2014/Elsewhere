@@ -51,7 +51,6 @@ function (data) {
         //         }
 
         //     }
-
         // },
 
         colorAxis: {
@@ -98,4 +97,3 @@ $(".map").click(function(event) {
     });
 
 });
-
