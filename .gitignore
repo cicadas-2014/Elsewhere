@@ -1,2 +1,6 @@
-*.sqlite3
-development.log
+**.sqlite3
+log/*
+tmp/*
+.bundle
+/.bundle
+/vendor/bundle
