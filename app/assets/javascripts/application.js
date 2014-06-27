@@ -27,7 +27,9 @@ $(function () {
 
     });
 
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?', function (data) {
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?',
+function (data) {
+
         console.log(data);
 
         // Initiate the chart
@@ -47,7 +49,8 @@ $(function () {
         //             alert ('x: '+ event.xAxis[0].value +', y: '+
         //                   event.yAxis[0].value);
         //         }
-        //     }        
+
+        //     }
         // },
 
         colorAxis: {
@@ -69,7 +72,7 @@ $(function () {
                         click: function(event) {
                             console.log(event.point.name);
                             $("#search").val(event.point.name);
-                            $("#searchbutt").click();
+                            $("#searchbutton").click();
                         }
                     }
                 }
@@ -85,6 +88,7 @@ $(function () {
                 }
             }]
         });
+
 });
 
 $(".map").click(function(event) {
@@ -93,4 +97,3 @@ $(".map").click(function(event) {
     });
 
 });
-
