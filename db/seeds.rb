@@ -1,6 +1,7 @@
 require 'CSV'
 require 'iso_country_codes'
 require 'money'
+require 'Nokogiri'
 
 
 english = Language.create(name: "English")
@@ -44,3 +45,38 @@ p currency_code = IsoCountryCodes.search_by_name('australia').first.currency
 p currency = Money.new(1000,currency_code).currency.name
 ###fetch exchange rate for USD to any currency using Open Exchange Rates gem
 p fx.exchange_rate(:from => "USD", :to => currency_code) # => 0.808996
+
+require 'net/http'
+require 'rexml/document'
+
+url = 'http://travel.state.gov/_res/rss/TAs.xml'
+
+require 'open-uri'
+require 'net/http'
+
+# Build the feed's URI
+uri = URI.parse(url);
+
+begin
+  response = Net::HTTP.get_response(uri);
+  if response.code != "200"
+    raise
+  end
+rescue
+  puts "Failed to request Twitter feed."
+  exit 1
+end
+
+begin
+	response.body
+  xmlDoc = REXML::Document.new(response.body)
+rescue
+  puts "Received invalid XML."
+  exit 1
+end
+
+p xmlDoc
+# Parse the data and print it in a friendly way.
+xmlDoc.elements.each("/channel/link") do |element| 
+    p element.attributes["description"]
+end
