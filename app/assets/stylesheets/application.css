@@ -2,14 +2,15 @@ header {
   background-color: #FFEFD5;
   height: 8%;
   width: 100%;
-  font-family: fantasy;
+  font-family: pt serif;
+  border: 2px #8B4513 solid;
 }
 
 #title {
   font-size: 30px;
   margin: 5px;
   padding: 5px;
-  border: 3px black solid;
+  border-right: 3px #8B4513 solid;
 }
 
 header p {
@@ -28,4 +29,26 @@ header p {
   margin-top: 10em;
   text-align: center;
   color: gray;
+}
+.search {
+  position: relative;
+  left: 35%;
+  top: 50px;
+  border: 2px solid #8B4513;
+  border-radius: 5px;
+  width: 30%;
+}
+.map {
+  position: relative;
+  top: 100px;
+}
+
+#directions {
+  text-align: center;
+  font-family: pt serif;
+  font-size: 25px;
+}
+
+#form {
+  float: center;
 }

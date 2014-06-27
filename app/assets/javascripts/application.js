@@ -22,8 +22,8 @@ $(function () {
             }
         },
         colorAxis: {
-            minColor: '#19E8FF',
-            maxColor: '#0125E8'
+            minColor: '#FFEFD5',
+            maxColor: '#8B4513'
         }
 
     });
