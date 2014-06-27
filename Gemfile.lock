@@ -165,12 +165,10 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
-
-
   database_cleaner
   factory_girl_rails
   faker
-
+  iso_country_codes
   jbuilder (~> 2.0)
   jquery-rails
   money
