@@ -5,7 +5,7 @@
 <%=form_tag url: "/search", method: "get" do %>
 <%=label_tag("Search for a Country:") %></br>
 <%=text_field_tag :search%>
-<%=submit_tag "Search", id: "searchbutt" %>
+<%=submit_tag "Search", id: "searchbutt", action '/:country_name' %>
 <%end%>
 </div>
 
