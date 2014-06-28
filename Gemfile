@@ -37,6 +37,8 @@ gem 'language-converter', '~> 1.0.0'
 gem 'language-translator', '~> 0.1.5'
 
 gem 'language_list', '~> 1.0.0'
+
+gem 'nokogiri', '~> 1.6.2.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

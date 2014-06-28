@@ -1,15 +1,3 @@
-require 'CSV'
-
-countries = []
-countries = CSV.read('db/corruption_2013.csv')
-nations = []
-countries.each do |country|
-	nations << country[0..2]   
-end
-nations.flatten!
-
-
-
 
 
 require 'CSV'
@@ -243,32 +231,25 @@ end
 
 
 
-english = Language.create(name: "English")
-spanish = Language.create(name: "Spanish")
-french = Language.create(name: "French")
 
-usa = Country.create(name: "USA", language_id: english.id)
-spain = Country.create(name: "Spain", language_id: spanish.id)
-france = Country.create(name: "France", language_id: french.id)
+require 'CSV'
 
-Phrase.create(language_id: english.id, hello: "hello", please: "please", thanks: "thanks", bathroom: "Where is the bathroom?")
-Phrase.create(language_id: spanish.id, hello: "hola", please: "por favor", thanks: "gracias", bathroom: "Ou est trouvent les toilettes?")
-Phrase.create(language_id: french.id, hello: "bonjour", please: "s'il vous plait", thanks: "merci", bathroom: "Donde esta el bano?")
+countries = []
+countries = CSV.read('db/corruption_2013.csv')
+nations = []
+countries.each do |country|
+	nations << country[0..1]   
+end
+p nations.flatten!
 
-Image.create(country_id: english.id, url: "http://www.scti.com.au/media/1059/travel-insurance-for-usa.jpg")
-Image.create(country_id: english.id, url: "http://www.itesolcourse.com/images/location/usa-travel.jpg")
-Image.create(country_id: english.id, url: "http://www.foley.com/files/Office/8766eedf-e4b8-42fe-9c37-4f8383686c0d/Presentation/OfficePhoto/washingtondc.jpg")
-Image.create(country_id: english.id, url: "http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/SF_From_Marin_Highlands3.jpg/1280px-SF_From_Marin_Highlands3.jpg")
+nations.each_slice(2) do | corruption_code , nation | 
+	if country = Country.find_by_name(nation)
+		country.corruption_index = corruption_code
+		country.save
+	end
+end
 
-Image.create(country_id: spain.id, url: "https://www.tripextras.com/files/countries/spain_basilicadelpilar.jpg")
-Image.create(country_id: spain.id, url: "http://www.fodors.com/world/images/destinations/668/spain.jpg")
-Image.create(country_id: spain.id, url: "http://www.fantom-xp.com/wallpapers/63/Travel_Spain.jpg")
-Image.create(country_id: spain.id, url: "http://www.survivalspain.com/img/spain-travel-guide-homepage.jpg")
 
-Image.create(country_id: france.id, url: "http://www.wallcoo.net/human/france/images/%5Bwallcoo%5D_france_travel_france_EF004.jpg")
-Image.create(country_id: france.id, url: "http://traveldealslady.com/wp-content/uploads/Paris-France-travel-tour-traveltours-travel-agent-deals.jpg")
-Image.create(country_id: france.id, url: "http://www.francetravelguide.com/files/2011/11/3952987239_3b29d282b5_z.jpg")
-Image.create(country_id: france.id, url: "http://www.fodors.com/world/images/destinations/231/ile-de-france.jpg")
 
 two_codes = []
 two_codes = CSV.read('db/two_codes.csv')
@@ -287,3 +268,41 @@ end
 russia = Country.find_by_name("Russian Federation")
 russia.common_name = "Russia"
 russia.save
+
+require 'CSV'
+
+language_array = CSV.read('db/language_names.csv')
+language_array.flatten!
+nations = []
+language_array.each_slice(2) do |language, lc|
+	if country = Country.find_by_language_code(lc)
+		country.language = language
+		country.save
+	end
+end
+
+Country.all.each do | country | 
+
+	if country.language_code == "EN"
+		country.language = "English"
+		country.save
+	end
+
+end
+
+# hello_array = CSV.read('db/hello_list.csv')
+# hello_array.flatten!
+# greeting_array = []
+# hello_array.map_slice(2) do | language, hello |
+
+
+end
+
+hello_array.each_slice(2) do |language, hello|
+	if country = Country.find_by_language(language)
+		Phrase.create(hello: hello, country_id: country.id)
+	end
+end
+
+
+
