@@ -3,16 +3,27 @@
 //= require turbolinks
 //= require_tree .
 
+
+
+
 $(function () {
+
+    // this updates the main image source whenever a thumbnail image is clicked    
+    $('div.show_images').on('click', 'img.thumbnail', function(e) {
+        e.preventDefault();
+        var new_image_source = e.target.getAttribute('src').replace("_q.jpg", "_z.jpg")
+        $('img#main_image').attr('src', new_image_source);
+    });
+
     Highcharts.setOptions({
         chart: {
-            backgroundColor: 'white',
-            height: 800,
+            backgroundColor: '#024E76',
+            height: 600,
             width: 1400
         },
         title: {
             style: {
-                color: 'white'
+                color: '#024E76'
             }
         },
         legend: {
@@ -37,10 +48,11 @@ function (data) {
 
 
             mapNavigation: {
-                enabled: true,
+             
                 buttonOptions: {
                     verticalAlign: 'bottom'
-                }
+                },
+                enableDoubleClickZoomTo: true
             },
 
 
@@ -64,7 +76,7 @@ function (data) {
             max: 1000,
             type: 'logarithmic',
             minColor: '#EEEEFF',
-            maxColor: '#000022',
+            maxColor: '#47384D',
         },
 
 
@@ -90,7 +102,7 @@ function (data) {
                 name: 'Country',
                 states: {
                     hover: {
-                        color: '#BADA55'
+                        color: '#218777'
                     }
                 },
                 tooltip: {

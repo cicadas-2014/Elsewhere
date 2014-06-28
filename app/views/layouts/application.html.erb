@@ -4,13 +4,13 @@
   <title>Elsewhere</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
+  <link href="http://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css">
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <header>
-<p id="title">Elsewhere</p> <p>Before you go somewhere, go elsewhere.</p>
+<%= link_to "Elsewhere", home_path %> <p>Before you go somewhere, go Elsewhere.</p>
   </header>
 
 <%= yield %>

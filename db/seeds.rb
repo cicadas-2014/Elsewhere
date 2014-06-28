@@ -1,9 +1,11 @@
 
 
+
 require 'CSV'
+
 require 'iso_country_codes'
 require 'money'
-require 'Nokogiri'
+# require 'Nokogiri'
 
 def two_code(country_name)
 	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
@@ -230,8 +232,6 @@ end
 end
 
 
-
-
 require 'CSV'
 
 countries = []
@@ -298,11 +298,34 @@ end
 
 end
 
+
+usa = Country.find_by(name: 'United States')
+usa.update(common_name: 'United States of America')
+russia = Country.find_by(name: 'Russian Federation')
+russia.update(common_name:'Russia')
+
 hello_array.each_slice(2) do |language, hello|
 	if country = Country.find_by_language(language)
 		Phrase.create(hello: hello, country_id: country.id)
 	end
 end
 
+################ THIS SEEDS THE IMAGES ################ 
+require 'flickr'
+flickr = Flickr.new(ENV["FLICKR_KEY"])
 
-
+Country.all.each do |country|	
+	photos = flickr.photos_search(
+		content_type: 1, 
+		safe_search: 1, 
+		tags: "#{country.name}, travel, beautiful",
+		tag_mode: "all", 
+		privacy_filter: 1, 
+		sort: "interestingness-desc",
+		media: "photos",
+		)
+	
+	photos[0..3].each do |photo|
+		country.images << Image.create(url: photo.source)
+	end
+end
