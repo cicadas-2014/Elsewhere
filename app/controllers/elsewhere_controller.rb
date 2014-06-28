@@ -4,15 +4,11 @@ class ElsewhereController < ApplicationController
   end
 
   def show
-    highcharts_country = params[:country_string].split(' ')
-    country_array = highcharts_country.split('-')
-    country_name = country_array[2]
-  	@country = Country.find_by(name: country_name)
+  	@country = Country.find_by(name: params[:search])
   	if @country.nil?
   		redirect_to home_path
-
     else
-      render show_path
+      render 'show'
   	end 
   end
 end
