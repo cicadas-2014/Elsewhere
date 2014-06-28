@@ -69,8 +69,14 @@ img {
   border: 2px solid black;
 }
 
+img#main_image {
+  height: 364px;
+  width: auto;
+}
+
 #results_title {
   font-family: pt serif;
   font-size: 20px;
   text-align: center;
 }
+
