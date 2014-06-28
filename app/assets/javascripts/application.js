@@ -2,17 +2,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {  
+
+
 
 $(function () {
     Highcharts.setOptions({
         chart: {
-            backgroundColor: 'white',
-            height: 800,
+            backgroundColor: '#024E76',
+            height: 600,
             width: 1400
         },
         title: {
             style: {
-                color: 'white'
+                color: '#024E76'
             }
         },
         legend: {
@@ -37,7 +40,7 @@ function (data) {
 
 
             mapNavigation: {
-                enabled: true,
+                enabled: false,
                 buttonOptions: {
                     verticalAlign: 'bottom'
                 }
@@ -112,3 +115,4 @@ $(".map").click(function(event) {
         // alert(event.target.id+" and "+event.target.class);
     });
 
+});
