@@ -87,7 +87,26 @@ function (data) {
                     valueSuffix: ' likes'
                 }
             }]
+
         });
+
+        // $('g.highcharts-series-group .highcharts-series path').on('click', function(e) {
+        //         e.preventDefault();
+        //         var target = $( event.target );
+        //         var split_route = $(target).attr("class").split(' ');
+        //         var route = split_route[1].split('-')
+        //         var final_route = route[2]
+        //         var request = $.ajax({
+        //             url: '/'+ final_route,
+        //             type: 'get',
+        //             data: {country_sting: $(target).attr("class")}
+        //         });
+
+        //         request.done(function(response) {
+        //             console.log(response);
+        //         })
+        //     })
+    });
 
 });
 
@@ -96,4 +115,3 @@ $(".map").click(function(event) {
         // alert(event.target.id+" and "+event.target.class);
     });
 
-});
