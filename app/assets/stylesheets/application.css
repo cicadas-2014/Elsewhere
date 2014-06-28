@@ -27,6 +27,10 @@ background:#fff;
 color:#09C;
 }
 
+g .highcharts-tooltip text {
+  background-color: black;
+}
+
 form input[type=text] {
   border: 2px solid white;
   border-radius: 10px;
@@ -101,10 +105,10 @@ header p {
 }
 .search {
   position: relative;
-  left: 35%;
+  left: auto;
+  right: auto;
   top: 10px;
   border-radius: 5px;
-  width: 30%;
   text-align: center;
   font-family: 'Quicksand';
   color: white;
@@ -159,4 +163,29 @@ img#main_image {
   font-size: 20px;
   text-align: center;
   margin-top: 100px;
+}
+
+.fact_cards {
+  border: 3px solid black;
+  height: 50px;
+  padding-left: auto;
+  padding-right: auto;
+  
+
+}
+
+div.fact {
+  border: 3px solid white;
+  width: 250px;
+  height: 150px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 4px;
+  text-align: center;
+  border-radius: 12px;
+  float: left;
+  background-color: #218777;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
 }

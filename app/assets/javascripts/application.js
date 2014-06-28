@@ -60,6 +60,17 @@ function (data) {
                 enabled: false
             },
 
+            tooltip: {
+                style: {
+                            backgroundColor: 'black',
+                            opacity: '1.0',
+                            color: '#218777',
+                            fontSize: '12px',
+                            padding: '8px',
+                            border: 'red'
+                        }
+                    },
+
         //     chart: {
         //     events: {
         //         click: function(event) {
@@ -106,7 +117,8 @@ function (data) {
                     }
                 },
                 tooltip: {
-                pointFormat: '{point.name}'
+                    pointFormat: '{point.name}'
+                    
                 }
 
 
@@ -121,6 +133,8 @@ function (data) {
 
 $(".map").click(function(event) {
     console.log("hello");
-        // alert(event.target.id+" and "+event.target.class);
+     Highcharts.clear
     });
+
+
 

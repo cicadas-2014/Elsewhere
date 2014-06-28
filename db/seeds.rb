@@ -1,4 +1,4 @@
-# require 'CSV'
+require 'CSV'
 require 'iso_country_codes'
 require 'money'
 # require 'Nokogiri'
@@ -252,3 +252,15 @@ Country.all.each do |country|
 		country.images << Image.create(url: photo.source)
 	end
 end
+
+#############THIS SEEDS POLITICAL RATING###########
+
+# poli_ratings = []
+# data = File.open('db/politicalstability.csv')
+# CSV.foreach(data) do |row|
+# 	poli_ratings << [row[0],row[1].gsub(/\t/,'').to_f]
+# end
+
+# poli_ratings.each do |rating|
+# 	Country.find_by(name: rating[0]).update_attributes(political_stability: rating[1])
+# end
