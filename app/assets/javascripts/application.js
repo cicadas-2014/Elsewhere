@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).ready(function() {  
+
 
 
 
@@ -124,4 +124,3 @@ $(".map").click(function(event) {
         // alert(event.target.id+" and "+event.target.class);
     });
 
-});
