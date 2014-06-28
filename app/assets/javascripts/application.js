@@ -6,7 +6,9 @@
 $(function () {
     Highcharts.setOptions({
         chart: {
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            height: 800,
+            width: 1400
         },
         title: {
             style: {
