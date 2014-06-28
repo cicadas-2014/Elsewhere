@@ -32,8 +32,6 @@ $(function () {
     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?',
 function (data) {
 
-        console.log(data);
-
         // Initiate the chart
         $('#container').highcharts('Map', {
 
@@ -44,6 +42,7 @@ function (data) {
                     verticalAlign: 'bottom'
                 }
             },
+
 
             legend: {
                 enabled: false
@@ -59,6 +58,7 @@ function (data) {
         //     }
         // },
 
+
         colorAxis: {
             min: 1,
             max: 1000,
@@ -73,8 +73,9 @@ function (data) {
                     cursor: 'pointer',
                     events: {
                         click: function(event) {
-                            console.log(event.point.name);
-                            $("#search").val(event.point.name);
+                            console.log(event.point.code)
+                            
+                            $("#search").val(event.point.code);
                             $("#searchbutton").click();
                         }
                     }
@@ -85,6 +86,7 @@ function (data) {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
+
                 name: 'Country',
                 states: {
                     hover: {
@@ -94,26 +96,13 @@ function (data) {
                 tooltip: {
                 pointFormat: '{point.name}'
                 }
+
+
+
             }]
 
         });
 
-        // $('g.highcharts-series-group .highcharts-series path').on('click', function(e) {
-        //         e.preventDefault();
-        //         var target = $( event.target );
-        //         var split_route = $(target).attr("class").split(' ');
-        //         var route = split_route[1].split('-')
-        //         var final_route = route[2]
-        //         var request = $.ajax({
-        //             url: '/'+ final_route,
-        //             type: 'get',
-        //             data: {country_sting: $(target).attr("class")}
-        //         });
-
-        //         request.done(function(response) {
-        //             console.log(response);
-        //         })
-        //     })
     });
 
 });
