@@ -43,6 +43,10 @@ function (data) {
                 }
             },
 
+            legend: {
+                enabled: false
+            },
+
         //     chart: {
         //     events: {
         //         click: function(event) {
@@ -56,14 +60,11 @@ function (data) {
         colorAxis: {
             min: 1,
             max: 1000,
-            type: 'logarithmic'
+            type: 'logarithmic',
+            minColor: '#EEEEFF',
+            maxColor: '#000022',
         },
 
-        legend: {
-            title: {
-                    // text: 'Population density (/km²)'
-                }
-            },
 
             plotOptions: {
                 series: {
@@ -82,9 +83,14 @@ function (data) {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-                name: 'Travel Info',
+                name: 'Country',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
                 tooltip: {
-                    valueSuffix: ' likes'
+                pointFormat: '{point.name}'
                 }
             }]
 
