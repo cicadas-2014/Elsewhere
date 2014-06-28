@@ -48,10 +48,11 @@ function (data) {
 
 
             mapNavigation: {
-                enabled: false,
+             
                 buttonOptions: {
                     verticalAlign: 'bottom'
-                }
+                },
+                enableDoubleClickZoomTo: true
             },
 
 
@@ -75,7 +76,7 @@ function (data) {
             max: 1000,
             type: 'logarithmic',
             minColor: '#EEEEFF',
-            maxColor: '#000022',
+            maxColor: '#47384D',
         },
 
 
@@ -101,7 +102,7 @@ function (data) {
                 name: 'Country',
                 states: {
                     hover: {
-                        color: '#BADA55'
+                        color: '#218777'
                     }
                 },
                 tooltip: {
