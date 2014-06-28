@@ -281,5 +281,4 @@ two_codes.each_slice(2) do | cc, lc |
 	if country = Country.find_by_two_character_code(cc)
 	 country.language_code = lc
 	 country.save
-	end
-end  
+    end  

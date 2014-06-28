@@ -89,3 +89,11 @@ li.country_image {
   width: 631px;
   height: 296px;
 }
+
+#results_title {
+  font-family: pt serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+
