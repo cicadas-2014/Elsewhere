@@ -10,9 +10,9 @@ class ElsewhereController < ApplicationController
   	@country = Country.find_by(name: country_name)
   	if @country.nil?
   		redirect_to home_path
+
     else
       render show_path
   	end 
   end
-
 end
