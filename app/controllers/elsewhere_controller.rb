@@ -6,21 +6,19 @@ class ElsewhereController < ApplicationController
   end
 
   def show
-    results = params[:search].capitalize
-    if results.length > 2
-      if results == ("Russia" || "United States of America")
-        @country = Country.find_by(common_name: results)
-      else
-        @country = Country.find_by(name: results)
-        @country_code = IsoCountryCodes.search_by_name(@country.name).first.alpha2
-      end
+    search = params[:search].capitalize
+    if search == ("Russia" || "United States of America")
+      @country = Country.find_by(common_name: search)
+    elsif search.length == 2
+      @country = Country.find_by(two_character_code: params[:search])
     else
-  	   @country = Country.find_by(two_character_code: params[:search])
+      @country = Country.find_by(name: search)
     end
-  	if @country.nil?
-  		redirect_to home_path
+    if @country.nil?
+      redirect_to home_path
     else
       render 'show'
-  	end 
+    end
   end
+
 end
