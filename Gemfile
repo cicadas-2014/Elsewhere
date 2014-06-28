@@ -20,8 +20,13 @@ gem 'jquery-rails'
 gem 'open_exchange_rates'
 gem 'iso_country_codes'
 gem 'money'
+<<<<<<< HEAD
 gem 'flickr.rb', '~> 1.2.0'
 
+=======
+
+gem 'countries', :require => 'iso3166'
+>>>>>>> 571d44d5923a18c45ff492cdd8998ec19a89ad46
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

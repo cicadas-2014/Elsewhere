@@ -3,6 +3,7 @@ require 'iso_country_codes'
 require 'money'
 # require 'Nokogiri'
 
+
 def two_code(country_name)
 	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
 end
@@ -226,15 +227,17 @@ end
   Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
 
+usa = Country.find_by(name: 'United States')
+usa.update(common_name: 'United States of America')
+russia = Country.find_by(name: 'Russian Federation')
+russia.update(common_name:'Russia')
+
 
 ################ THIS SEEDS THE IMAGES ################ 
 require 'flickr'
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
-countries = Country.all
-
-countries.each do |country|
-	
+Country.all.each do |country|	
 	photos = flickr.photos_search(
 		content_type: 1, 
 		safe_search: 1, 
@@ -244,9 +247,8 @@ countries.each do |country|
 		sort: "interestingness-desc",
 		media: "photos",
 		)
-
+	
 	photos[0..3].each do |photo|
 		country.images << Image.create(url: photo.source)
 	end
-
 end

@@ -14,7 +14,9 @@ $(function () {
 
     Highcharts.setOptions({
         chart: {
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            height: 800,
+            width: 1400
         },
         title: {
             style: {
@@ -38,8 +40,6 @@ $(function () {
     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=world-population-density.json&callback=?',
 function (data) {
 
-        console.log(data);
-
         // Initiate the chart
         $('#container').highcharts('Map', {
 
@@ -52,25 +52,38 @@ function (data) {
             },
 
 
+            legend: {
+                enabled: false
+            },
+
+        //     chart: {
+        //     events: {
+        //         click: function(event) {
+        //             alert ('x: '+ event.xAxis[0].value +', y: '+
+        //                   event.yAxis[0].value);
+        //         }
+
+        //     }
+        // },
+
+
         colorAxis: {
             min: 1,
             max: 1000,
-            type: 'logarithmic'
+            type: 'logarithmic',
+            minColor: '#EEEEFF',
+            maxColor: '#000022',
         },
 
-        legend: {
-            title: {
-                    // text: 'Population density (/km²)'
-                }
-            },
 
             plotOptions: {
                 series: {
                     cursor: 'pointer',
                     events: {
                         click: function(event) {
-                            console.log(event.point.name);
-                            $("#search").val(event.point.name);
+                            console.log(event.point.code)
+                            
+                            $("#search").val(event.point.code);
                             $("#searchbutton").click();
                         }
                     }
@@ -81,12 +94,24 @@ function (data) {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-                name: 'Travel Info',
-                // tooltip: {
-                //     valueSuffix: ' likes'
-                // }
+
+                name: 'Country',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
+                tooltip: {
+                pointFormat: '{point.name}'
+                }
+
+
+
             }]
+
         });
+
+    });
 
 });
 
@@ -95,4 +120,3 @@ $(".map").click(function(event) {
         // alert(event.target.id+" and "+event.target.class);
     });
 
-});

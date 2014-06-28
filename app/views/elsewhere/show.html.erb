@@ -1,4 +1,6 @@
-Welcome to <%= @country.name %>'s page!
+<div id='results_title'>
+	<p>Welcome to <strong><%= @country.name %>'s</strong> page!</p>
+</div>
 
 <div class="show_images">
 <% unless @country.images.empty? %>
@@ -12,4 +14,4 @@ Welcome to <%= @country.name %>'s page!
 		<% end %>
 	</div>
 <% end %>
-</div>
+

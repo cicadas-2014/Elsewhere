@@ -68,3 +68,9 @@ div.country_images {
 img {
   border: 2px solid black;
 }
+
+#results_title {
+  font-family: pt serif;
+  font-size: 20px;
+  text-align: center;
+}
