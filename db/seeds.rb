@@ -1,11 +1,13 @@
+require 'CSV'
 
 countries = []
-countries = CSV.read("corruption_2013.csv")
+countries = CSV.read('db/corruption_2013.csv')
 nations = []
 countries.each do |country|
 	nations << country[0..2]   
 end
 nations.flatten!
+
 
 
 
@@ -268,4 +270,16 @@ Image.create(country_id: france.id, url: "http://traveldealslady.com/wp-content/
 Image.create(country_id: france.id, url: "http://www.francetravelguide.com/files/2011/11/3952987239_3b29d282b5_z.jpg")
 Image.create(country_id: france.id, url: "http://www.fodors.com/world/images/destinations/231/ile-de-france.jpg")
 
+two_codes = []
+two_codes = CSV.read('db/two_codes.csv')
 
+two_codes.flatten!
+
+two_codes.map!(&:upcase)
+
+two_codes.each_slice(2) do | cc, lc | 
+	if country = Country.find_by_two_character_code(cc)
+	 country.language_code = lc
+	 country.save
+	end
+end  
