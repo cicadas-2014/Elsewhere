@@ -1,11 +1,15 @@
 Welcome to <%= @country.name %>'s page!
 
-<div id="main_image">
-	<img src="<%= @country.images.first.url %>">
-</div>
+<div class="show_images">
+<% unless @country.images.empty? %>
+	<div class="country_images" id="main_image">
+		<img id="main_image" src="<%= @country.images.first.large_url %>">
+	</div>
 
-<ul id="country_images">
-	<% @country.images.each do |image| %>
-		<li class="country_image"><img src='<%= image.url %>'></li>
-	<% end %>
-</ul>
+	<div class="country_images">
+		<% @country.images.each do |image| %>
+			<img class="thumbnail" src='<%= image.thumbnail_url %>'>
+		<% end %>
+	</div>
+<% end %>
+</div>

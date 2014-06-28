@@ -59,33 +59,12 @@ header p {
   float: center;
 }
 
-div#main_image {
+div.country_images {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+img {
   border: 2px solid black;
-  width: 50%;
-  margin: 0 25%;
-  height: 300px;
-}
-
-ul#country_images {
-  width: 80%;
-  margin: 10px 10%;
-  border: 2px solid black;
-  height: 200px;
-}
-
-li.country_image {
-  width: 24%;
-  height: 100%;
-  border: 2px solid black;
-  display: inline-block;
-}
-
-.country_image img {
-  width: 233px;
-  height: 196px;
-}
-
-#main_image img {
-  width: 631px;
-  height: 296px;
 }

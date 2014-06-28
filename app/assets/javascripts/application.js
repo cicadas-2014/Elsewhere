@@ -4,6 +4,14 @@
 //= require_tree .
 
 $(function () {
+
+    // this updates the main image source whenever a thumbnail image is clicked    
+    $('div.show_images').on('click', 'img.thumbnail', function(e) {
+        e.preventDefault();
+        var new_image_source = e.target.getAttribute('src').replace("_q.jpg", "_z.jpg")
+        $('img#main_image').attr('src', new_image_source);
+    });
+
     Highcharts.setOptions({
         chart: {
             backgroundColor: 'white'
@@ -43,15 +51,6 @@ function (data) {
                 }
             },
 
-        //     chart: {
-        //     events: {
-        //         click: function(event) {
-        //             alert ('x: '+ event.xAxis[0].value +', y: '+
-        //                   event.yAxis[0].value);
-        //         }
-
-        //     }
-        // },
 
         colorAxis: {
             min: 1,
@@ -83,9 +82,9 @@ function (data) {
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
                 name: 'Travel Info',
-                tooltip: {
-                    valueSuffix: ' likes'
-                }
+                // tooltip: {
+                //     valueSuffix: ' likes'
+                // }
             }]
         });
 

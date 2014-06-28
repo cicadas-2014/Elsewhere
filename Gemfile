@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'open_exchange_rates'
 gem 'iso_country_codes'
 gem 'money'
-
+gem 'flickr.rb', '~> 1.2.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
