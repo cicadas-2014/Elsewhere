@@ -281,4 +281,9 @@ two_codes.each_slice(2) do | cc, lc |
 	if country = Country.find_by_two_character_code(cc)
 	 country.language_code = lc
 	 country.save
-    end  
+    end 
+end 
+
+russia = Country.find_by_name("Russian Federation")
+russia.common_name = "Russia"
+russia.save
