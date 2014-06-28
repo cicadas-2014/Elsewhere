@@ -4,9 +4,19 @@
 //= require_tree .
 
 $(function () {
+
+    // this updates the main image source whenever a thumbnail image is clicked    
+    $('div.show_images').on('click', 'img.thumbnail', function(e) {
+        e.preventDefault();
+        var new_image_source = e.target.getAttribute('src').replace("_q.jpg", "_z.jpg")
+        $('img#main_image').attr('src', new_image_source);
+    });
+
     Highcharts.setOptions({
         chart: {
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            height: 800,
+            width: 1400
         },
         title: {
             style: {
@@ -41,17 +51,30 @@ function (data) {
                 }
             },
 
+
+            legend: {
+                enabled: false
+            },
+
+        //     chart: {
+        //     events: {
+        //         click: function(event) {
+        //             alert ('x: '+ event.xAxis[0].value +', y: '+
+        //                   event.yAxis[0].value);
+        //         }
+
+        //     }
+        // },
+
+
         colorAxis: {
             min: 1,
             max: 1000,
-            type: 'logarithmic'
+            type: 'logarithmic',
+            minColor: '#EEEEFF',
+            maxColor: '#000022',
         },
 
-        legend: {
-            title: {
-                    // text: 'Population density (/km²)'
-                }
-            },
 
             plotOptions: {
                 series: {
@@ -71,7 +94,19 @@ function (data) {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-                name: 'Country'
+
+                name: 'Country',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                },
+                tooltip: {
+                pointFormat: '{point.name}'
+                }
+
+
+
             }]
 
         });

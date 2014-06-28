@@ -1,3 +1,17 @@
 <div id='results_title'>
-<p>Welcome to <strong><%= @country.name %>'s</strong> page!</p>
+	<p>Welcome to <strong><%= @country.name %>'s</strong> page!</p>
 </div>
+
+<div class="show_images">
+<% unless @country.images.empty? %>
+	<div class="country_images" id="main_image">
+		<img id="main_image" src="<%= @country.images.first.large_url %>">
+	</div>
+
+	<div class="country_images">
+		<% @country.images.each do |image| %>
+			<img class="thumbnail" src='<%= image.thumbnail_url %>'>
+		<% end %>
+	</div>
+<% end %>
+
