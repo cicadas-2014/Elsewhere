@@ -1,3 +1,4 @@
+
 countries = []
 countries = CSV.read("corruption_2013.csv")
 nations = []
@@ -8,13 +9,31 @@ nations.flatten!
 
 
 
+
+require 'CSV'
+require 'iso_country_codes'
+require 'money'
+require 'Nokogiri'
+
+def two_code(country_name)
+	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
+end
+
+def three_code(country_name)
+	code = IsoCountryCodes.search_by_name(country_name).first.alpha3
+end
+
+def currency(country_name)
+	currency_code = IsoCountryCodes.search_by_name(country_name).first.currency
+	currency = Money.new(1000,currency_code).currency.name
+end
+
+
 ["Aruba",
 "Andorra",
 "Afghanistan",
 "Angola",
 "Albania",
-"Andean Region",
-"Arab World",
 "United Arab Emirates",
 "Argentina",
 "Armenia",
@@ -30,7 +49,7 @@ nations.flatten!
 "Bangladesh",
 "Bulgaria",
 "Bahrain",
-"Bahamas, The",
+"Bahamas",
 "Bosnia and Herzegovina",
 "Belarus",
 "Belize",
@@ -41,28 +60,20 @@ nations.flatten!
 "Brunei Darussalam",
 "Bhutan",
 "Botswana",
-"Sub-Saharan Africa",
 "Central African Republic",
 "Canada",
-"East Asia and the Pacific",
-"Europe and Central Asia",
 "Switzerland",
-"Channel Islands",
 "Chile",
 "China",
-"Cote d'Ivoire",
-"Latin America and the Caribbean",
-"Middle East and North Africa",
+"Côte d'Ivoire",
 "Cameroon",
-"Congo, Rep.",
+"Congo",
 "Colombia",
 "Comoros",
 "Cabo Verde",
 "Costa Rica",
-"South Asia",
-"Caribbean small states",
 "Cuba",
-"Curacao",
+"Curaçao",
 "Cayman Islands",
 "Cyprus",
 "Czech Republic",
@@ -72,28 +83,23 @@ nations.flatten!
 "Denmark",
 "Dominican Republic",
 "Algeria",
-"East Asia & Pacific",
-"East Asia & Pacific",
-"Europe & Central Asia",
 "Ecuador",
 "Egypt",
-"Euro area",
 "Eritrea",
 "Spain",
 "Estonia",
 "Ethiopia",
-"European Union",
 "Finland",
 "Fiji",
 "France",
-"Faeroe Islands",
-"Micronesia, Fed. Sts.",
+"Faroe Islands",
+"Micronesia, Federated States of",
 "Gabon",
 "United Kingdom",
 "Georgia",
 "Ghana",
 "Guinea",
-"Gambia, The",
+"Gambia",
 "Guinea-Bissau",
 "Equatorial Guinea",
 "Greece",
@@ -102,14 +108,12 @@ nations.flatten!
 "Guatemala",
 "Guam",
 "Guyana",
-"High income",
 "Hong Kong",
 "Honduras",
 "Croatia",
 "Haiti",
 "Hungary",
 "Indonesia",
-"Isle of Man",
 "India",
 "Ireland",
 "Iran",
@@ -122,29 +126,24 @@ nations.flatten!
 "Japan",
 "Kazakhstan",
 "Kenya",
-"Kyrgyz Republic",
+"Kyrgyzstan",
 "Cambodia",
 "Kiribati",
-"St. Kitts and Nevis",
+"Saint Kitts and Nevis",
 "Korea, Rep.",
-"Kosovo",
 "Kuwait",
-"Latin America & Caribbean",
 "Lao",
 "Lebanon",
 "Liberia",
 "Libya",
-"St. Lucia",
-"Latin America & Caribbean",
-"Latin America and the Caribbean",
+"Saint Lucia",
 "Liechtenstein",
 "Sri Lanka",
 "Lesotho",
 "Lithuania",
 "Luxembourg",
 "Latvia",
-"Macao SAR, China",
-"St. Martin",
+"Saint Martin",
 "Morocco",
 "Monaco",
 "Moldova",
@@ -152,7 +151,6 @@ nations.flatten!
 "Maldives",
 "Mexico",
 "Marshall Islands",
-"Middle income",
 "Macedonia",
 "Mali",
 "Malta",
@@ -165,7 +163,6 @@ nations.flatten!
 "Mauritius",
 "Malawi",
 "Malaysia",
-"North America",
 "Namibia",
 "New Caledonia",
 "Niger",
@@ -187,15 +184,12 @@ nations.flatten!
 "Korea",
 "Portugal",
 "Paraguay",
-"Pacific island small states",
 "French Polynesia",
 "Qatar",
 "Romania",
 "Russian Federation",
 "Rwanda",
-"South Asia",
 "Saudi Arabia",
-"Southern Cone Extended",
 "Sudan",
 "Senegal",
 "Singapore",
@@ -205,11 +199,10 @@ nations.flatten!
 "San Marino",
 "Somalia",
 "Serbia",
-"Sub-Saharan Africa",
 "South Sudan",
 "Sao Tome and Principe",
 "Suriname",
-"Slovak Republic",
+"Slovakia",
 "Slovenia",
 "Sweden",
 "Swaziland",
@@ -227,28 +220,25 @@ nations.flatten!
 "Trinidad and Tobago",
 "Tunisia",
 "Turkey",
-"Tuvalu",
 "Tanzania",
 "Uganda",
 "Ukraine",
 "Uruguay",
 "United States",
 "Uzbekistan",
-"St. Vincent and the Grenadines",
-"Venezuela, RB",
+"Saint Vincent and the Grenadines",
+"Venezuela",
 "Virgin Islands",
 "Vietnam",
 "Vanuatu",
-"West Bank and Gaza",
-"World",
 "Samoa",
 "Yemen",
 "South Africa",
-"Congo, Dem. Rep.",
 "Zambia",
 "Zimbabwe"].each do |country|
-  Country.create(name:country)
+  Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
+
 
 
 english = Language.create(name: "English")

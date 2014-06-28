@@ -1,1 +1,11 @@
 Welcome to <%= @country.name %>'s page!
+
+<div id="main_image">
+	<img src="<%= @country.images.first.url %>">
+</div>
+
+<ul id="country_images">
+	<% @country.images.each do |image| %>
+		<li class="country_image"><img src='<%= image.url %>'></li>
+	<% end %>
+</ul>
