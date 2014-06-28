@@ -1,3 +1,13 @@
+countries = []
+countries = CSV.read("corruption_2013.csv")
+nations = []
+countries.each do |country|
+	nations << country[0..2]   
+end
+nations.flatten!
+
+
+
 ["Aruba",
 "Andorra",
 "Afghanistan",
@@ -267,3 +277,5 @@ Image.create(country_id: france.id, url: "http://www.wallcoo.net/human/france/im
 Image.create(country_id: france.id, url: "http://traveldealslady.com/wp-content/uploads/Paris-France-travel-tour-traveltours-travel-agent-deals.jpg")
 Image.create(country_id: france.id, url: "http://www.francetravelguide.com/files/2011/11/3952987239_3b29d282b5_z.jpg")
 Image.create(country_id: france.id, url: "http://www.fodors.com/world/images/destinations/231/ile-de-france.jpg")
+
+
