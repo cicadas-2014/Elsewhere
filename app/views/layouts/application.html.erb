@@ -6,14 +6,26 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href="http://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css">
   <%= csrf_meta_tags %>
+
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/maps/modules/map.js"></script>
+<script src="http://code.highcharts.com/mapdata/custom/world.js"></script>
 </head>
 <body>
 
   <header>
-<%= link_to "Elsewhere", home_path %> <p>Before you go somewhere, go Elsewhere.</p>
-  </header>
+    <%= link_to "Elsewhere", home_path, method: 'get' %><br>
+    <p>Before you go somewhere, go Elsewhere.</p>
 
-<%= yield %>
+
+  <div class="search">
+    <%=form_tag "/search", method: "get" do %>
+    <%=label_tag :search, "" %>
+    <%=text_field_tag :search%><%=submit_tag "SEARCH", id: 'searchbutton' %>
+    <%end%>
+  </div>
+  </header>
+  <%= yield %>
 
 </body>
 </html>

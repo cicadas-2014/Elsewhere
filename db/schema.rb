@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626220719) do
+ActiveRecord::Schema.define(version: 20140626220722) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "countries", force: true do |t|
     t.string   "name"
@@ -24,6 +27,8 @@ ActiveRecord::Schema.define(version: 20140626220719) do
     t.string   "three_character_code"
     t.string   "language_code"
     t.string   "currency"
+    t.boolean  "is_malaria_hotspot"
+    t.string   "cuisine"
     t.text     "intro"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,6 +37,12 @@ ActiveRecord::Schema.define(version: 20140626220719) do
   create_table "images", force: true do |t|
     t.integer  "country_id"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

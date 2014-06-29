@@ -13,9 +13,11 @@
 		<% @country.images.each do |image| %>
 			<img class="thumbnail" src='<%= image.thumbnail_url %>'>
 		<% end %>
-	
+	</div>
 <% end %>
 </div>
+
+
 
 <h2>Fun Facts</h2>
 <div class="fun_fact">
@@ -23,3 +25,4 @@
 </div>
 <h2>Currency:</h2><%=@country.currency%>
 </div>
+

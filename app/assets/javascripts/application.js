@@ -5,9 +5,7 @@
 
 
 
-
-$(function () {
-
+var ready = function() {
     // this updates the main image source whenever a thumbnail image is clicked    
     $('div.show_images').on('click', 'img.thumbnail', function(e) {
         e.preventDefault();
@@ -60,6 +58,18 @@ function (data) {
                 enabled: false
             },
 
+
+            tooltip: {
+                style: {
+                            backgroundColor: 'black',
+                            opacity: '1.0',
+                            color: '#218777',
+                            fontSize: '12px',
+                            padding: '8px',
+                            border: 'red'
+                        }
+                    },
+
         //     chart: {
         //     events: {
         //         click: function(event) {
@@ -106,7 +116,8 @@ function (data) {
                     }
                 },
                 tooltip: {
-                pointFormat: '{point.name}'
+                    pointFormat: '{point.name}'
+                    
                 }
 
 
@@ -116,11 +127,10 @@ function (data) {
         });
 
     });
+};
 
-});
 
-$(".map").click(function(event) {
-    console.log("hello");
-        // alert(event.target.id+" and "+event.target.class);
-    });
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
 
