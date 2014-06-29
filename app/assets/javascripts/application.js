@@ -58,6 +58,29 @@ function (data) {
                 enabled: false
             },
 
+
+            tooltip: {
+                style: {
+                            backgroundColor: 'black',
+                            opacity: '1.0',
+                            color: '#218777',
+                            fontSize: '12px',
+                            padding: '8px',
+                            border: 'red'
+                        }
+                    },
+
+        //     chart: {
+        //     events: {
+        //         click: function(event) {
+        //             alert ('x: '+ event.xAxis[0].value +', y: '+
+        //                   event.yAxis[0].value);
+        //         }
+
+        //     }
+        // },
+
+
         colorAxis: {
             min: 1,
             max: 1000,
@@ -93,7 +116,8 @@ function (data) {
                     }
                 },
                 tooltip: {
-                pointFormat: '{point.name}'
+                    pointFormat: '{point.name}'
+                    
                 }
 
 
