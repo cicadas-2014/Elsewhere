@@ -1,8 +1,14 @@
-# require 'CSV'
+=begin
+SEEDS FILE CURRENTLY TAKES CARE OF:
+country names, country wiki info, flickr images, official currency, corruption index, official language
+=end
+
+
 require 'iso_country_codes'
 require 'money'
 require 'nokogiri'
-
+require 'csv'
+require 'flickr'
 
 def two_code(country_name)
 	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
@@ -17,7 +23,7 @@ def currency(country_name)
 	currency = Money.new(1000,currency_code).currency.name
 end
 
-
+################ THIS SEEDS THE COUNTRY NAMES ################ 
 ["Aruba",
 "Andorra",
 "Afghanistan",
@@ -241,10 +247,12 @@ problem_countries = [
 	"Pakistan",
 	"Qatar",
 	"Spain",
-	"Togo"
+	"Togo",
+	"Nigeria",
+	"Azerbaijan"
 ]
 
-Country.order(name: :desc).each do |country|
+Country.order(name: :asc).each do |country|
 	if country.name == "Korea, Rep."
 		name = "South_Korea"
 	elsif country.name == "Micronesia, Federated States of"
@@ -280,7 +288,7 @@ Country.order(name: :desc).each do |country|
 					@i1 = intro1[0].content
 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")						
+		country.update(intro: "#{@i1} #{@i2}")
 	elsif name == ("Puerto_Rico")
 			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
 	elsif name == ("Mongolia")
@@ -314,9 +322,7 @@ usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
-
 ################ THIS SEEDS THE IMAGES ################ 
-require 'flickr'
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
 Country.all.each do |country|	
@@ -334,3 +340,57 @@ Country.all.each do |country|
 		country.images << Image.create(url: photo.source)
 	end
 end
+
+################ THIS SEEDS THE CORRUPTION ################ 
+
+countries = []
+countries = CSV.read('db/corruption_2013.csv')
+nations = []
+countries.each do |country|
+	nations << country[0..1]   
+end
+p nations.flatten!
+
+nations.each_slice(2) do | corruption_code , nation | 
+	if country = Country.find_by_name(nation)
+		country.corruption_index = corruption_code
+		country.save
+	end
+end
+
+################ THIS SEEDS THE LANGUAGE ################ 
+
+two_codes = []
+two_codes = CSV.read('db/two_codes.csv')
+
+two_codes.flatten!
+
+two_codes.map!(&:upcase)
+
+two_codes.each_slice(2) do | cc, lc | 
+	if country = Country.find_by_two_character_code(cc)
+	 country.language_code = lc
+	 country.save
+    end 
+end 
+
+language_array = CSV.read('db/language_names.csv')
+language_array.flatten!
+nations = []
+language_array.each_slice(2) do |language, lc|
+	if country = Country.find_by_language_code(lc)
+		country.language = language
+		country.save
+	end
+end
+
+Country.all.each do | country | 
+
+	if country.language_code == "EN"
+		country.language = "English"
+		country.save
+	end
+
+end
+
+# EOF
