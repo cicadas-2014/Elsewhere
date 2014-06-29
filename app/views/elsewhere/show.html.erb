@@ -1,5 +1,6 @@
+<div class = "results">
 <div id='results_title'>
-	<p>Welcome to <strong><%= @country.name %>'s</strong> page!</p>
+	<p><strong><%= @country.name %></strong></p>
 </div>
 
 <div class="show_images">
@@ -16,7 +17,9 @@
 <% end %>
 </div>
 
-
-
+<h2>Fun Facts</h2>
+<div class="fun_fact">
 <%=@country.intro%>
-
+</div>
+<h2>Currency:</h2><%=@country.currency%>
+</div>
