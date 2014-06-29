@@ -228,8 +228,23 @@ end
   Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
 
+problem_countries = [	
+	"Finland",
+	"Honduras",
+	"Bolivia",
+	"Algeria",
+	"Dominican_Republic",
+	"Netherlands",
+	"Nicaragua",
+	"Mexico",
+	"Malawi",
+	"Pakistan",
+	"Qatar",
+	"Spain",
+	"Togo"
+]
 
-Country.all.each do |country|
+Country.order(name: :desc).each do |country|
 	if country.name == "Korea, Rep."
 		name = "South_Korea"
 	elsif country.name == "Micronesia, Federated States of"
@@ -256,7 +271,7 @@ Country.all.each do |country|
 			name = multiple[0]
 		end
 	end
-	if name == ("Finland")
+	if problem_countries.include?(name)
 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
 				intro1 = doc.css('#content p:eq(1)')
 	      intro2 = doc.css('#content p:eq(2)')
@@ -265,17 +280,7 @@ Country.all.each do |country|
 					@i1 = intro1[0].content
 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Honduras")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
-	 
-
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
-				
-			country.update(intro: "#{@i1} #{@i2}")
+			country.update(intro: "#{@i1} #{@i2}")						
 	elsif name == ("Puerto_Rico")
 			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
 	elsif name == ("Mongolia")
@@ -286,36 +291,6 @@ Country.all.each do |country|
 					@i1 = intro1[0].content
 				
 			country.update(intro: "#{@i1}")
-	elsif name == ("Netherlands")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
-	 
-
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
-				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Nicaragua")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
-	 
-
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
-				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Mexico")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
-	 
-
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
-				
-			country.update(intro: "#{@i1} #{@i2}")
 	elsif name == ("Russian_Federation")
 			country.update(intro: "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
 	else
