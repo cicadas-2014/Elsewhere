@@ -234,6 +234,76 @@ end
   Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
 
+
+
+
+require 'CSV'
+
+countries = []
+countries = CSV.read('db/corruption_2013.csv')
+nations = []
+countries.each do |country|
+	nations << country[0..1]   
+end
+p nations.flatten!
+
+nations.each_slice(2) do | corruption_code , nation | 
+	if country = Country.find_by_name(nation)
+		country.corruption_index = corruption_code
+		country.save
+	end
+end
+
+
+
+two_codes = []
+two_codes = CSV.read('db/two_codes.csv')
+
+two_codes.flatten!
+
+two_codes.map!(&:upcase)
+
+two_codes.each_slice(2) do | cc, lc | 
+	if country = Country.find_by_two_character_code(cc)
+	 country.language_code = lc
+	 country.save
+    end 
+end 
+
+russia = Country.find_by_name("Russian Federation")
+russia.common_name = "Russia"
+russia.save
+
+require 'CSV'
+
+language_array = CSV.read('db/language_names.csv')
+language_array.flatten!
+nations = []
+language_array.each_slice(2) do |language, lc|
+	if country = Country.find_by_language_code(lc)
+		country.language = language
+		country.save
+	end
+end
+
+Country.all.each do | country | 
+
+	if country.language_code == "EN"
+		country.language = "English"
+		country.save
+	end
+
+end
+
+hello_array = CSV.read('db/hello_list.csv')
+hello_array.flatten!
+greeting_array = []
+hello_array.map_slice(2) do | language, hello |
+
+################Intros####################
+
+Country.all.each do |country|
+
 problem_countries = [	
 	"Finland",
 	"Honduras",
@@ -317,10 +387,34 @@ Country.order(name: :asc).each do |country|
 end	
 
 
+# #################Common Names####################
+
+
 usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
+
+# #################Languages####################
+hello_array.each_slice(2) do |language, hello|
+	if country = Country.find_by_language(language)
+		Phrase.create(hello: hello, country_id: country.id)
+	end
+end
+#################Cuisines####################
+cuisine_data = []
+CSV.foreach ("db/cuisine.csv") do |row|
+  cuisine_data << row
+end
+data = cuisine_data.flatten
+paired = data.each_slice(2)
+paired.each do |p|
+  if @country = Country.find_by(name: p[0])
+  	@country.update(cuisine: p[1])
+  end
+end
+
+
 
 ################ THIS SEEDS THE IMAGES ################ 
 flickr = Flickr.new(ENV["FLICKR_KEY"])

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140626220722) do
     t.string   "three_character_code"
     t.string   "language_code"
     t.string   "currency"
+    t.string   "cuisine"
     t.text     "intro"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -10,10 +10,18 @@
 <body>
 
   <header>
-<%= link_to "Elsewhere", home_path %> <p>Before you go somewhere, go Elsewhere.</p>
-  </header>
+    <%= link_to "Elsewhere", home_path, method: 'get' %><br>
+    <p>Before you go somewhere, go Elsewhere.</p>
 
-<%= yield %>
+
+  <div class="search">
+    <%=form_tag "/search", method: "get" do %>
+    <%=label_tag :search, "" %>
+    <%=text_field_tag :search%><%=submit_tag "SEARCH", id: 'searchbutton' %>
+    <%end%>
+  </div>
+  </header>
+  <%= yield %>
 
 </body>
 </html>
