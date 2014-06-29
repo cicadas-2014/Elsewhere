@@ -1,8 +1,11 @@
-# require 'CSV'
+
+
+
+require 'CSV'
+
 require 'iso_country_codes'
 require 'money'
 require 'nokogiri'
-
 
 def two_code(country_name)
 	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
@@ -229,6 +232,72 @@ end
 end
 
 
+
+require 'CSV'
+
+countries = []
+countries = CSV.read('db/corruption_2013.csv')
+nations = []
+countries.each do |country|
+	nations << country[0..1]   
+end
+p nations.flatten!
+
+nations.each_slice(2) do | corruption_code , nation | 
+	if country = Country.find_by_name(nation)
+		country.corruption_index = corruption_code
+		country.save
+	end
+end
+
+
+
+two_codes = []
+two_codes = CSV.read('db/two_codes.csv')
+
+two_codes.flatten!
+
+two_codes.map!(&:upcase)
+
+two_codes.each_slice(2) do | cc, lc | 
+	if country = Country.find_by_two_character_code(cc)
+	 country.language_code = lc
+	 country.save
+    end 
+end 
+
+russia = Country.find_by_name("Russian Federation")
+russia.common_name = "Russia"
+russia.save
+
+require 'CSV'
+
+language_array = CSV.read('db/language_names.csv')
+language_array.flatten!
+nations = []
+language_array.each_slice(2) do |language, lc|
+	if country = Country.find_by_language_code(lc)
+		country.language = language
+		country.save
+	end
+end
+
+Country.all.each do | country | 
+
+	if country.language_code == "EN"
+		country.language = "English"
+		country.save
+	end
+
+end
+
+# hello_array = CSV.read('db/hello_list.csv')
+# hello_array.flatten!
+# greeting_array = []
+# hello_array.map_slice(2) do | language, hello |
+
+
+
 Country.all.each do |country|
 	if country.name == "Korea, Rep."
 		name = "South_Korea"
@@ -267,6 +336,76 @@ Country.all.each do |country|
 				
 			country.update(intro: "#{@i1} #{@i2}")
 	elsif name == ("Honduras")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Qatar")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Pakistan")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Malawi")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Spain")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Algeria")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Dominican_Republic")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Bolivia")
 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
 				intro1 = doc.css('#content p:eq(1)')
 	      intro2 = doc.css('#content p:eq(2)')
@@ -334,11 +473,17 @@ Country.all.each do |country|
 end	
 
 
+
 usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
+hello_array.each_slice(2) do |language, hello|
+	if country = Country.find_by_language(language)
+		Phrase.create(hello: hello, country_id: country.id)
+	end
+end
 
 ################ THIS SEEDS THE IMAGES ################ 
 require 'flickr'
