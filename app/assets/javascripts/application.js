@@ -112,7 +112,7 @@ function (data) {
                 name: 'Country',
                 states: {
                     hover: {
-                        color: '#202930'
+                        color: '#CCFFB3'
                     }
                 },
                 tooltip: {
