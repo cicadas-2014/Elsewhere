@@ -4,13 +4,43 @@
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+div.show_images {
+  margin-top: 30px;
+  width: 100%;
+  clear: both;
+}
+
+div.fact_cards div {
+}
+
+div.demo {
+
+}
+
+div.info {
+  width: 80%;
+  margin: 0 10%;
+  text-align: center;
+}
+
+div.title {
+  margin-top: 120px;
+}
+
 body {
   background-color: #024E76;
+  padding: 0px; 
+  margin: 0px;
 }
 .results {
-  background-color: white;
-  padding: 40px;
-  margin: 25px;
+  margin-top: 40px;
+}
+
+.results h3 {
+  font-size: 60px;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
 }
 
 #searchbutton {
@@ -24,6 +54,7 @@ font-family: 'Quicksand', sans-serif;
 height:20px;
 border: 1px solid black;
 }
+
 input.searchbutton:hover {
 background:#fff;
 color:#09C;
@@ -135,25 +166,28 @@ input#search {
 
 
 div.country_images {
-  text-align: center;
+font-family: sans-serif;  
+text-align: center;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 img {
   border: 2px solid black;
+  border-radius: 10px;
 }
 
 img#main_image {
-  height: 364px;
+  height: 500px;
   width: auto;
 }
 
 #results_title {
-  font-family: pt serif;
+font-family: 'Josefin Sans', sans-serif;
   font-size: 35px;
+  z-index: 1;
   text-align: center;
-  margin-top: 100px;
 }
 
 div.card {
@@ -164,7 +198,7 @@ div.card {
   text-align: center;
   padding: 10px;
   width: 300px;
-  float: left;
+  display: inline-block;
   height: 100px;
   background-color: white;
 }
@@ -174,8 +208,17 @@ div.card {
   padding: 0px;
 }
 
+#malaria {
+  color: red;
+}
+
 .fun_fact {
   font-family: 'Quicksand';
   margin-top: 30px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
 
 }

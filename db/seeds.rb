@@ -341,7 +341,7 @@ end
 
 
 ################ THIS SEEDS THE IMAGES ################ 
-# flickr = Flickr.new(ENV["FLICKR_KEY"])
+flickr = Flickr.new(ENV["FLICKR_KEY"])
 
 
 Country.all.each do |country|	
