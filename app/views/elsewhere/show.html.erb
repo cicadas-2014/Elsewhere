@@ -1,5 +1,6 @@
+<div class = "results">
 <div id='results_title'>
-	<p>Welcome to <strong><%= @country.name %>'s</strong> page!</p>
+	<p><strong><%= @country.name %></strong></p>
 </div>
 
 <div class="show_images">
@@ -16,21 +17,12 @@
 <% end %>
 </div>
 
-<div class="fact_cards">
-	<div class="fact" id="language">
-		<h4>Language:</h4>
-		<%= @country.language %>
-	</div>
-	<div class="fact" id="currency">
-		<h4>Currency:</h4>
-		<%= @country.currency %>
-	</div>
-	<div class="fact" id="political">
-		<%= @country.political_stability %>
-	</div>
-	<div class="fact" id="warning"></div>
-	<div class="fact" id="political"></div>
-	<div class="fact" id="warning"></div>
-	<div class="fact" id="political"></div>
-	<div class="fact" id="warning"></div>
+
+
+<h2>Fun Facts</h2>
+<div class="fun_fact">
+<%=@country.intro%>
 </div>
+<h2>Currency:</h2><%=@country.currency%>
+</div>
+

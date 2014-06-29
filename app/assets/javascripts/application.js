@@ -60,6 +60,7 @@ function (data) {
                 enabled: false
             },
 
+
             tooltip: {
                 style: {
                             backgroundColor: 'black',
@@ -130,6 +131,7 @@ function (data) {
     });
 
 });
+
 
 $(".map").click(function(event) {
     console.log("hello");
