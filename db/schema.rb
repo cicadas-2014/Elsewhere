@@ -27,11 +27,8 @@ ActiveRecord::Schema.define(version: 20140626220722) do
     t.string   "three_character_code"
     t.string   "language_code"
     t.string   "currency"
-<<<<<<< HEAD
     t.boolean  "is_malaria_hotspot"
-=======
     t.text     "intro"
->>>>>>> 810a11e600f9b9c808a7e6cea8c8672a2de9c2dd
     t.datetime "created_at"
     t.datetime "updated_at"
   end
