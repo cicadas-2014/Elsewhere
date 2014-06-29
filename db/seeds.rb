@@ -1,7 +1,7 @@
 # require 'CSV'
 require 'iso_country_codes'
 require 'money'
-# require 'Nokogiri'
+require 'nokogiri'
 
 
 def two_code(country_name)
@@ -16,6 +16,7 @@ def currency(country_name)
 	currency_code = IsoCountryCodes.search_by_name(country_name).first.currency
 	currency = Money.new(1000,currency_code).currency.name
 end
+
 
 ["Aruba",
 "Andorra",
@@ -226,6 +227,43 @@ end
 "Zimbabwe"].each do |country|
   Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
+
+
+Country.all.each do |country|
+	if country.name == "Korea, Rep."
+		name = "South_Korea"
+	elsif country.name == "Micronesia, Federated States of"
+		name = "Federated_States_of_Micronesia"
+	elsif country.name == "Brunei Darussalam"
+		name = "Brunei"
+	elsif country.name == "Côte d'Ivoire"
+		name = "Ivory_Coast"
+	elsif country.name == "Curaçao"
+		name = "Curacao"
+	elsif country.name == "Syrian Arab Republic"
+		name = "Syria"
+	else
+		multiple = country.name.split(" ")
+		if multiple.count > 1
+			name = multiple.join("_")
+		else
+			name = multiple[0]
+		end
+	end
+	p name
+	p country.name
+			doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+			intro =  doc.css('#mw-content-text table p:eq(2)')
+			intro2 =  doc.css('#mw-content-text table p:eq(3)')
+			intro.each do |i|
+				i1 = i.content
+			end
+			intro2.each do |i|
+				i2 = i.content
+			end
+		country.update(intro: '#{i1} #{i2}')
+end
+
 
 usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
