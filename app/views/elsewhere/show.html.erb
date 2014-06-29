@@ -18,14 +18,16 @@
 
 <div class="fact_cards">
 	<div class="fact" id="language">
-		<h4>Currency:</h4>
-		<%= @country.currency %>
+		<h4>Language:</h4>
+		<%= @country.language %>
 	</div>
 	<div class="fact" id="currency">
 		<h4>Currency:</h4>
 		<%= @country.currency %>
 	</div>
-	<div class="fact" id="political"></div>
+	<div class="fact" id="political">
+		<%= @country.political_stability %>
+	</div>
 	<div class="fact" id="warning"></div>
 	<div class="fact" id="political"></div>
 	<div class="fact" id="warning"></div>
