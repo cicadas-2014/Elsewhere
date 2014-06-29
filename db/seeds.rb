@@ -233,7 +233,7 @@ russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
 
-################ THIS SEEDS THE IMAGES ################ 
+############### THIS SEEDS THE IMAGES ################ 
 require 'flickr'
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
