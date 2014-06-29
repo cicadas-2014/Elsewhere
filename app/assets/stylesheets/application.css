@@ -13,19 +13,16 @@ body {
   margin: 25px;
 }
 
-input.searchbutton {
-width:100px;
-position:absolute;
-right:20px;
-bottom:20px;
-background:#09C;
+#searchbutton {
+margin-top: 14px;
+margin-left: 5px;
+width:65px;
+float: right;
+background-color:#024E76;;
 color:#fff;
 font-family: 'Quicksand', sans-serif;
-height:30px;
--webkit-border-radius: 15px;
--moz-border-radius: 15px;
-border-radius: 15px;
-border: 1px solid #999;
+height:20px;
+border: 1px solid black;
 }
 input.searchbutton:hover {
 background:#fff;
@@ -34,27 +31,20 @@ color:#09C;
 
 form input[type=text] {
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: #218777;
-  color: white;
+  color: black;
 }
 
 form input[type=submit] {
-  color: white;
+  color: black;
   background-color: #218777;
   font-family: 'Quicksand', sans-serif;
-  font-size: 15px;
-  border: 2px solid white;
+  font-size: 12px;
+  border: 2px solid black;
+  border-radius: 3px;
 
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-radius: 10px;
-  text-align: center;
-  margin-top: 8px;
 }
-
 
 header {
   background-color: #218777;
@@ -70,6 +60,7 @@ header {
   text-decoration: none;
   text-shadow: 0 4px 0 rgba(0,0,0,.15);
   padding: 10px;
+  border:2px black solid;
 }
 
 header a {
@@ -85,10 +76,9 @@ header a {
 }
 
 header p {
-  display: inline-block;
   font-style: italic;
-  font-size: 20px;
-  float: right;
+  font-size: 18px;
+  margin: 0px;
 }
 
 #container {
@@ -103,11 +93,10 @@ header p {
   color: gray;
 }
 .search {
-  position: relative;
-  left: 35%;
-  top: 10px;
-  border-radius: 5px;
-  width: 30%;
+  position: absolute;
+  right: 10%;
+  top: 5px;
+  border-radius: 1px;
   text-align: center;
   font-family: 'Quicksand';
   color: white;
@@ -115,23 +104,22 @@ header p {
 }
 
 input#search {
-  width: 400px;
-  height: 35px;
+  width: 250px;
+  height: 30px;
   font-family: 'Quicksand';
   text-align: center;
   font-size: 26px;
-  background-color:white;
+  background-color: white;
   border: 2px black solid;
 }
 
-form {
-  padding: 12px ;
-}
 .map {
   position: absolute;
   top: 100px;
   left: 0px;
   z-index: -1;
+  width: 500px;
+  height: auto;
 }
 
 #directions {
@@ -140,9 +128,6 @@ form {
   font-size: 25px;
 }
 
-#form {
-  float: center;
-}
 
 div.country_images {
   text-align: center;
