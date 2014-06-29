@@ -380,7 +380,6 @@ require 'csv'
           @i1 = intro1[0].content
           @i2 = intro2[0].content
 
-        
       @intros << ("#{country.name}""#{@i1} #{@i2}")
   end
 end 
