@@ -58,17 +58,6 @@ function (data) {
                 enabled: false
             },
 
-        //     chart: {
-        //     events: {
-        //         click: function(event) {
-        //             alert ('x: '+ event.xAxis[0].value +', y: '+
-        //                   event.yAxis[0].value);
-        //         }
-
-        //     }
-        // },
-
-
         colorAxis: {
             min: 1,
             max: 1000,
@@ -116,12 +105,8 @@ function (data) {
     });
 };
 
+
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-
-// $(".map").click(function(event) {
-//     console.log("hello");
-//         // alert(event.target.id+" and "+event.target.class);
-//     });
 
