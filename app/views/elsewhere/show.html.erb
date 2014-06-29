@@ -19,10 +19,24 @@
 
 
 
-<h2>Fun Facts</h2>
+
 <div class="fun_fact">
-<%=@country.intro%>
-</div>
-<h2>Currency:</h2><%=@country.currency%>
+	<%=@country.intro%>
+	<div class="card">
+		<h2>Language:</h2>
+		<p><%=@country.display_language%></p>
+	</div>
+	<div class="card">
+		<h2>Currency:</h2>
+		<%=@country.currency%>
+	</div>
+	<div class="card">
+		<h2>Politics:</h2>
+		<p>Political Stability: <%=@country.political_rating%></p>
+	</div>
+	<div class="card">
+		<h2>Health:</h2>
+		<p><%=@country.malaria?%></p>
+	</div>
 </div>
 
