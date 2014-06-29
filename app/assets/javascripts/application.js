@@ -5,9 +5,7 @@
 
 
 
-
-$(function () {
-
+var ready = function() {
     // this updates the main image source whenever a thumbnail image is clicked    
     $('div.show_images').on('click', 'img.thumbnail', function(e) {
         e.preventDefault();
@@ -129,14 +127,10 @@ function (data) {
         });
 
     });
+};
 
-});
 
-
-$(".map").click(function(event) {
-    console.log("hello");
-     Highcharts.clear
-    });
-
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 

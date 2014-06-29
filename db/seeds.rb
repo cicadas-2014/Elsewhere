@@ -236,55 +236,127 @@ end
   Country.create(name:country, two_character_code: two_code(country), three_character_code: three_code(country), currency: currency(country))
 end
 
-# problem_countries = [	
-# 	"Finland",
-# 	"Honduras",
-# 	"Bolivia",
-# 	"Algeria",
-# 	"Dominican_Republic",
-# 	"Netherlands",
-# 	"Nicaragua",
-# 	"Mexico",
-# 	"Malawi",
-# 	"Pakistan",
-# 	"Qatar",
-# 	"Spain",
-# 	"Togo",
-# 	"Nigeria",
-# 	"Azerbaijan"
-# ]
 
-# Country.order(name: :asc).each do |country|
-# 	if country.name == "Korea, Rep."
-# 		name = "South_Korea"
-# 	elsif country.name == "Micronesia, Federated States of"
-# 		name = "Federated_States_of_Micronesia"
-# 	elsif country.name == "Brunei Darussalam"
-# 		name = "Brunei"
-# 	elsif country.name == "Côte d'Ivoire"
-# 		name = "Ivory_Coast"
-# 	elsif country.name == "Curaçao"
-# 		name = "Curacao"
-# 	elsif country.name == "Syrian Arab Republic"
-# 		name = "Syria"
-# 	elsif country.name == "Congo"
-# 		name = "Democratic_Republic_of_the_Congo"
-# 	elsif country.name == "Georgia"
-# 		name = "Georgia_(country)"
-# 	elsif country.name == "Macedonia"
-# 		name = "Republic_of_Macedonia"
-# 	else
-# 		multiple = country.name.split(" ")
-# 		if multiple.count > 1
-# 			name = multiple.join("_")
-# 		else
-# 			name = multiple[0]
-# 		end
-# 	end
-# 	if problem_countries.include?(name)
-# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-# 				intro1 = doc.css('#content p:eq(1)')
-# 	      intro2 = doc.css('#content p:eq(2)')
+
+
+
+require 'CSV'
+
+countries = []
+countries = CSV.read('db/corruption_2013.csv')
+nations = []
+countries.each do |country|
+	nations << country[0..1]   
+end
+p nations.flatten!
+
+nations.each_slice(2) do | corruption_code , nation | 
+	if country = Country.find_by_name(nation)
+		country.corruption_index = corruption_code
+		country.save
+	end
+end
+
+
+
+two_codes = []
+two_codes = CSV.read('db/two_codes.csv')
+
+two_codes.flatten!
+
+two_codes.map!(&:upcase)
+
+two_codes.each_slice(2) do | cc, lc | 
+	if country = Country.find_by_two_character_code(cc)
+	 country.language_code = lc
+	 country.save
+    end 
+end 
+
+russia = Country.find_by_name("Russian Federation")
+russia.common_name = "Russia"
+russia.save
+
+require 'CSV'
+
+language_array = CSV.read('db/language_names.csv')
+language_array.flatten!
+nations = []
+language_array.each_slice(2) do |language, lc|
+	if country = Country.find_by_language_code(lc)
+		country.language = language
+		country.save
+	end
+end
+
+Country.all.each do | country | 
+
+	if country.language_code == "EN"
+		country.language = "English"
+		country.save
+	end
+
+end
+
+hello_array = CSV.read('db/hello_list.csv')
+hello_array.flatten!
+greeting_array = []
+hello_array.map_slice(2) do | language, hello |
+
+################Intros####################
+
+Country.all.each do |country|
+
+problem_countries = [	
+	"Finland",
+	"Honduras",
+	"Bolivia",
+	"Algeria",
+	"Dominican_Republic",
+	"Netherlands",
+	"Nicaragua",
+	"Mexico",
+	"Malawi",
+	"Pakistan",
+	"Qatar",
+	"Spain",
+	"Togo",
+	"Nigeria",
+	"Azerbaijan"
+]
+
+Country.order(name: :asc).each do |country|
+	if country.name == "Korea, Rep."
+		name = "South_Korea"
+	elsif country.name == "Micronesia, Federated States of"
+		name = "Federated_States_of_Micronesia"
+	elsif country.name == "Brunei Darussalam"
+		name = "Brunei"
+	elsif country.name == "Côte d'Ivoire"
+		name = "Ivory_Coast"
+	elsif country.name == "Curaçao"
+		name = "Curacao"
+	elsif country.name == "Syrian Arab Republic"
+		name = "Syria"
+	elsif country.name == "Congo"
+		name = "Democratic_Republic_of_the_Congo"
+	elsif country.name == "Georgia"
+		name = "Georgia_(country)"
+	elsif country.name == "Macedonia"
+		name = "Republic_of_Macedonia"
+	else
+		multiple = country.name.split(" ")
+		if multiple.count > 1
+			name = multiple.join("_")
+		else
+			name = multiple[0]
+		end
+	end
+	if problem_countries.include?(name)
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+
 	 
 
 # 					@i1 = intro1[0].content
@@ -319,10 +391,34 @@ end
 # end	
 
 
+# #################Common Names####################
+
+
 usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
+
+
+# #################Languages####################
+hello_array.each_slice(2) do |language, hello|
+	if country = Country.find_by_language(language)
+		Phrase.create(hello: hello, country_id: country.id)
+	end
+end
+#################Cuisines####################
+cuisine_data = []
+CSV.foreach ("db/cuisine.csv") do |row|
+  cuisine_data << row
+end
+data = cuisine_data.flatten
+paired = data.each_slice(2)
+paired.each do |p|
+  if @country = Country.find_by(name: p[0])
+  	@country.update(cuisine: p[1])
+  end
+end
+
 
 
 ################ THIS SEEDS THE IMAGES ################ 
