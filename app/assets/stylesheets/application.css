@@ -28,9 +28,7 @@ div.title {
 }
 
 body {
-  background-color: #024E76;
-  padding: 0px; 
-  margin: 0px;
+  background-color: #A4DEF4;
 }
 .results {
   margin-top: 40px;
@@ -44,12 +42,12 @@ body {
 }
 
 #searchbutton {
-margin-top: 14px;
+margin-top: 8px;
 margin-left: 5px;
 width:65px;
 float: right;
-background-color:#024E76;;
-color:#fff;
+background-color: white;
+color: black;
 font-family: 'Quicksand', sans-serif;
 height:20px;
 border: 1px solid black;
@@ -65,7 +63,6 @@ g .highcharts-tooltip text {
 }
 
 form input[type=text] {
-  border: 2px solid white;
   border-radius: 4px;
   background-color: #218777;
   color: black;
@@ -73,7 +70,7 @@ form input[type=text] {
 
 form input[type=submit] {
   color: black;
-  background-color: #218777;
+  background-color: white;
   font-family: 'Quicksand', sans-serif;
   font-size: 12px;
   border: 2px solid black;
@@ -82,7 +79,7 @@ form input[type=submit] {
 }
 
 header {
-  background-color: #218777;
+  background-color: #202930 ;
   height: auto;
   width: 100%;
   font-family: pt serif;
@@ -90,12 +87,11 @@ header {
   top: 0px;
   left: 0px;
   font-family: 'Quicksand',sans-serif;
-  font-size: 40px;
+  font-size: 25px;
   color: white;
   text-decoration: none;
   text-shadow: 0 4px 0 rgba(0,0,0,.15);
   padding: 10px;
-  border:2px black solid;
 }
 
 header a {
@@ -112,7 +108,7 @@ header a {
 
 header p {
   font-style: italic;
-  font-size: 18px;
+  font-size: 10px;
   margin: 0px;
 }
 
@@ -130,7 +126,7 @@ header p {
 .search {
 
   position: absolute;
-  right: 10%;
+  right: 5%;
   top: 5px;
   border-radius: 1px;
   text-align: center;
@@ -144,9 +140,8 @@ input#search {
   height: 30px;
   font-family: 'Quicksand';
   text-align: center;
-  font-size: 26px;
+  font-size: 22px;
   background-color: white;
-  border: 2px black solid;
 }
 
 .map {
