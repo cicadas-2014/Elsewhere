@@ -10,6 +10,8 @@ class CreateCountries < ActiveRecord::Migration
       t.string :two_character_code
       t.string :three_character_code
       t.string :currency
+      t.text :intro
+
       t.timestamps
     end
   end

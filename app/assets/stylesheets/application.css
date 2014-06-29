@@ -7,6 +7,11 @@
 body {
   background-color: #024E76;
 }
+.results {
+  background-color: white;
+  padding: 40px;
+  margin: 25px;
+}
 
 input.searchbutton {
 width:100px;
@@ -56,7 +61,6 @@ header {
   height: auto;
   width: 100%;
   font-family: pt serif;
-  border-bottom: 4px white solid;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -71,7 +75,6 @@ header {
 header a {
   text-decoration: none;
   color: white;
-
 }
 
 #title {
@@ -84,7 +87,7 @@ header a {
 header p {
   display: inline-block;
   font-style: italic;
-  font-size: 18px;
+  font-size: 20px;
   float: right;
 }
 
@@ -117,6 +120,8 @@ input#search {
   font-family: 'Quicksand';
   text-align: center;
   font-size: 26px;
+  background-color:white;
+  border: 2px black solid;
 }
 
 form {
@@ -156,7 +161,12 @@ img#main_image {
 
 #results_title {
   font-family: pt serif;
-  font-size: 20px;
+  font-size: 35px;
   text-align: center;
   margin-top: 100px;
+}
+
+.fun_facts {
+  font-family: 'Quicksand';
+  color: #218777;
 }
