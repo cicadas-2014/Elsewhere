@@ -15,25 +15,25 @@ var ready = function() {
 
     Highcharts.setOptions({
         chart: {
-            backgroundColor: '#024E76',
+            backgroundColor: '#A4DEF4',
             height: 600,
             width: 1400
         },
         title: {
             style: {
-                color: '#024E76'
+                color: '#A4DEF4'
             }
         },
         legend: {
             title: {
                 style: {
-                    color: 'silver'
+                    color: '#161A59'
                 }
             }
         },
         colorAxis: {
-            minColor: '#FFEFD5',
-            maxColor: '#8B4513'
+            minColor: '#A9E455',
+            maxColor: '#71A33D'
         }
 
     });
@@ -63,10 +63,10 @@ function (data) {
                 style: {
                             backgroundColor: 'black',
                             opacity: '1.0',
-                            color: '#218777',
+                            color: 'black',
                             fontSize: '12px',
                             padding: '8px',
-                            border: 'red'
+                            border: 'black'
                         }
                     },
 
@@ -85,8 +85,8 @@ function (data) {
             min: 1,
             max: 1000,
             type: 'logarithmic',
-            minColor: '#EEEEFF',
-            maxColor: '#47384D',
+            minColor: '#9BDA6A',
+            maxColor: '#004D26',
         },
 
 
@@ -108,11 +108,11 @@ function (data) {
                 data : data,
                 mapData: Highcharts.maps['custom/world'],
                 joinBy: ['iso-a2', 'code'],
-
+                borderColor: 'black',
                 name: 'Country',
                 states: {
                     hover: {
-                        color: '#218777'
+                        color: '#202930'
                     }
                 },
                 tooltip: {
