@@ -237,71 +237,11 @@ end
 end
 
 
-
-
-
-require 'CSV'
-
-countries = []
-countries = CSV.read('db/corruption_2013.csv')
-nations = []
-countries.each do |country|
-	nations << country[0..1]   
-end
-p nations.flatten!
-
-nations.each_slice(2) do | corruption_code , nation | 
-	if country = Country.find_by_name(nation)
-		country.corruption_index = corruption_code
-		country.save
-	end
-end
-
-
-
-two_codes = []
-two_codes = CSV.read('db/two_codes.csv')
-
-two_codes.flatten!
-
-two_codes.map!(&:upcase)
-
-two_codes.each_slice(2) do | cc, lc | 
-	if country = Country.find_by_two_character_code(cc)
-	 country.language_code = lc
-	 country.save
-    end 
-end 
-
 russia = Country.find_by_name("Russian Federation")
 russia.common_name = "Russia"
 russia.save
 
-require 'CSV'
 
-language_array = CSV.read('db/language_names.csv')
-language_array.flatten!
-nations = []
-language_array.each_slice(2) do |language, lc|
-	if country = Country.find_by_language_code(lc)
-		country.language = language
-		country.save
-	end
-end
-
-Country.all.each do | country | 
-
-	if country.language_code == "EN"
-		country.language = "English"
-		country.save
-	end
-
-end
-
-# hello_array = CSV.read('db/hello_list.csv')
-# hello_array.flatten!
-# greeting_array = []
-# hello_array.map_slice(2) do | language, hello |
 
 ################Intros####################
 
@@ -310,7 +250,6 @@ CSV.foreach("db/intro.csv") do |c|
 	@country.update(intro: c[1])
 end
 
-# #################Common Names####################
 
 
 usa = Country.find_by(name: 'United States')
@@ -319,12 +258,7 @@ russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
 
-# #################Languages####################
-# hello_array.each_slice(2) do |language, hello|
-# 	if country = Country.find_by_language(language)
-# 		Phrase.create(hello: hello, country_id: country.id)
-# 	end
-# end
+
 #################Cuisines####################
 cuisine_data = []
 CSV.foreach ("db/cuisine.csv") do |row|
@@ -340,7 +274,9 @@ end
 
 
 
+
 ################ THIS SEEDS THE IMAGES ################ 
+
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
 
@@ -360,7 +296,7 @@ Country.all.each do |country|
 	end
 end
 
-# ############THIS SEEDS POLITICAL RATING###########
+############THIS SEEDS POLITICAL RATING###########
 
 poli_ratings = []
 data = File.open('db/politicalstability.csv')
@@ -390,6 +326,70 @@ Country.all.each do |country|
 	end
 end
 
+################Seeds four phrases from google translate####
+
+require 'net/http'
+
+
+terms = ["hello", "please", "thanks", "where is the bathroom"]
+uri_terms = terms.map { |term| term.gsub(" ", "%20") }
+
+source_language = "en"
+
+
+target_language = []
+
+countries = Country.all
+countries.each do | country | 
+	target_language << country.id 
+	target_language << country.language_code
+end
+
+
+
+target_language.each_slice(2) do |country_id, target_language|	
+	
+	uri_terms.each_slice(4) do |hello, please, thanks, bathroom|
+		
+		r_hello = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{hello}")	
+	    hello_r = Net::HTTP.get_response(r_hello)
+	    if hello_r.code == "200" && hello_r.body.match(/(\[\[\[")(.+?)(")/)
+	       hello_phrase = hello_r.body.match(/(\[\[\[")(.+?)(")/)[2]  
+	    else
+	       hello_phrase = "wazzup"
+	    end
+
+		r_please = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{please}")
+		please_r = Net::HTTP.get_response(r_please)
+		if please_r.code == "200" && please_r.body.match(/(\[\[\[")(.+?)(")/)
+		   please_phrase = please_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   please_phrase = "Pretty Please"
+		end
+		
+		r_thanks = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{thanks}")
+		thanks_r = Net::HTTP.get_response(r_thanks)
+		if thanks_r.code == "200" && thanks_r.body.match(/(\[\[\[")(.+?)(")/)
+		   thanks_phrase = thanks_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   thanks_phrase = "Much Obliged Partner"
+		end
+
+		r_bathroom = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{bathroom}")
+		bathroom_r = Net::HTTP.get_response(r_bathroom)
+		if bathroom_r.code == "200" && bathroom_r.body.match(/(\[\[\[")(.+?)(")/)
+		   bathroom_phrase = bathroom_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   bathroom_phrase = "Latrine Please"
+		end
+
+		Phrase.create(hello: hello_phrase.force_encoding('UTF-8'), please: please_phrase.force_encoding('UTF-8'), thanks: thanks_phrase.force_encoding('UTF-8'), bathroom: bathroom_phrase.force_encoding('UTF-8'), country_id: country_id)
+	    
+	end
+	
+end
+
+p "done"
 
 ################ THIS SEEDS THE CORRUPTION ################ 
 
@@ -444,5 +444,6 @@ Country.all.each do | country |
 end
 
 # EOF
+
 
 
