@@ -241,7 +241,7 @@ nations = []
 countries.each do |country|
 	nations << country[0..1]   
 end
-p nations.flatten!
+nations.flatten!
 
 nations.each_slice(2) do | corruption_code , nation | 
 	if country = Country.find_by_name(nation)
@@ -325,151 +325,151 @@ Country.all.each do |country|
 			name = multiple[0]
 		end
 	end
-	if name == ("Finland")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 	if name == ("Finland")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Honduras")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Honduras")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Qatar")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Qatar")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Pakistan")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Pakistan")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Malawi")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Malawi")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Spain")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Spain")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Algeria")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Algeria")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Dominican_Republic")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Dominican_Republic")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-		elsif name == ("Bolivia")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 		elsif name == ("Bolivia")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Puerto_Rico")
-			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
-	elsif name == ("Mongolia")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Puerto_Rico")
+# 			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
+# 	elsif name == ("Mongolia")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p')
 	 
 
-					@i1 = intro1[0].content
+# 					@i1 = intro1[0].content
 				
-			country.update(intro: "#{@i1}")
-	elsif name == ("Netherlands")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1}")
+# 	elsif name == ("Netherlands")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Nicaragua")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Nicaragua")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Mexico")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p:eq(1)')
-	      intro2 = doc.css('#content p:eq(2)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Mexico")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p:eq(1)')
+# 	      intro2 = doc.css('#content p:eq(2)')
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Russian_Federation")
-			country.update(intro: "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
-	else
-		p name
-		p country.name
-				doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 =  doc.css('#mw-content-text table tr:eq(1) p:eq(2)')
-	      intro2 =  doc.css('#mw-content-text table tr:eq(1) p:eq(3)')
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Russian_Federation")
+# 			country.update(intro: "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
+# 	else
+# 		p name
+# 		p country.name
+# 				doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 =  doc.css('#mw-content-text table tr:eq(1) p:eq(2)')
+# 	      intro2 =  doc.css('#mw-content-text table tr:eq(1) p:eq(3)')
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	end
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	end
 end	
 
 
@@ -479,11 +479,11 @@ usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
-hello_array.each_slice(2) do |language, hello|
-	if country = Country.find_by_language(language)
-		Phrase.create(hello: hello, country_id: country.id)
-	end
-end
+# hello_array.each_slice(2) do |language, hello|
+# 	if country = Country.find_by_language(language)
+# 		Phrase.create(hello: hello, country_id: country.id)
+# 	end
+# end
 
 ################ THIS SEEDS THE IMAGES ################ 
 require 'flickr'
@@ -504,3 +504,83 @@ Country.all.each do |country|
 		country.images << Image.create(url: photo.source)
 	end
 end
+
+require 'net/http'
+
+# term = "thank you".gsub(" ", "%20")
+terms = ["hello", "please", "thanks", "where is the bathroom"]
+uri_terms = terms.map { |term| term.gsub(" ", "%20") }
+
+source_language = "en"
+
+# to_lang = "fr"
+# to_langs = ["fr", "es"]
+target_language = []
+
+countries = Country.all
+countries.each do | country | 
+	target_language << country.id 
+	target_language << country.language_code
+end
+
+
+
+target_language.each_slice(2) do |country_id, target_language|	
+	# puts "Current Language: " + target_language
+	uri_terms.each_slice(4) do |hello, please, thanks, bathroom|
+		
+		r_hello = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{hello}")	
+	    # p "*" * 20
+	    # p r_hello
+	    hello_r = Net::HTTP.get_response(r_hello)
+	    # p "*" * 20
+	    # p hello_r
+	    # p "*" * 10
+	    # p hello_r.code
+	    if hello_r.code == "200" && hello_r.body.match(/(\[\[\[")(.+?)(")/)
+	       # p "*" * 20
+	       # p "hello here"
+	       hello_phrase = hello_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+	       # p "*" * 20
+	    else
+	       hello_phrase = "wazzup"
+	    end
+
+		r_please = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{please}")
+		please_r = Net::HTTP.get_response(r_please)
+		if please_r.code == "200" && please_r.body.match(/(\[\[\[")(.+?)(")/)
+			# p "please here"
+		   please_phrase = please_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   please_phrase = "Pretty Please"
+		end
+		
+		r_thanks = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{thanks}")
+		thanks_r = Net::HTTP.get_response(r_thanks)
+		if thanks_r.code == "200" && thanks_r.body.match(/(\[\[\[")(.+?)(")/)
+			# p "thanks here"
+		   thanks_phrase = thanks_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   thanks_phrase = "Much Obliged Partner"
+		end
+
+		r_bathroom = URI("https://translate.google.com/translate_a/single?client=t&sl=#{source_language}&tl=#{target_language}&hl=en&dt=bd&dt=ex&dt=ld&dt=md&dt=qc&dt=rw&dt=rm&dt=ss&dt=t&dt=at&dt=sw&ie=UTF-8&oe=UTF-8&oc=2&prev=btn&ssel=0&tsel=0&q=#{bathroom}")
+		bathroom_r = Net::HTTP.get_response(r_bathroom)
+		if bathroom_r.code == "200" && bathroom_r.body.match(/(\[\[\[")(.+?)(")/)
+			# p "bathroom here"
+		   bathroom_phrase = bathroom_r.body.match(/(\[\[\[")(.+?)(")/)[2]
+		else
+		   bathroom_phrase = "Latrine Please"
+		end
+
+		# puts response.body.match(/(\[\[\[")(.+?)(")/)[2]
+
+		Phrase.create(hello: hello_phrase.force_encoding('UTF-8'), please: please_phrase.force_encoding('UTF-8'), thanks: thanks_phrase.force_encoding('UTF-8'), bathroom: bathroom_phrase.force_encoding('UTF-8'), country_id: country_id)
+	    
+	end
+	
+end
+
+p "done"
+
+
