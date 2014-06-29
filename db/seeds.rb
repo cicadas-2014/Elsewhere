@@ -345,6 +345,76 @@ Country.all.each do |country|
 					@i2 = intro2[0].content
 				
 			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Qatar")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Pakistan")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Malawi")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Spain")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Algeria")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Dominican_Republic")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
+		elsif name == ("Bolivia")
+		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+				intro1 = doc.css('#content p:eq(1)')
+	      intro2 = doc.css('#content p:eq(2)')
+	 
+
+					@i1 = intro1[0].content
+					@i2 = intro2[0].content
+				
+			country.update(intro: "#{@i1} #{@i2}")
 	elsif name == ("Puerto_Rico")
 			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
 	elsif name == ("Mongolia")
