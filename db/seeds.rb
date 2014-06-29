@@ -291,12 +291,12 @@ Country.all.each do | country |
 
 end
 
-# hello_array = CSV.read('db/hello_list.csv')
-# hello_array.flatten!
-# greeting_array = []
-# hello_array.map_slice(2) do | language, hello |
+hello_array = CSV.read('db/hello_list.csv')
+hello_array.flatten!
+greeting_array = []
+hello_array.map_slice(2) do | language, hello |
 
-
+################Intros####################
 
 Country.all.each do |country|
 	if country.name == "Korea, Rep."
@@ -472,18 +472,31 @@ Country.all.each do |country|
 	end
 end	
 
-
+# #################Common Names####################
 
 usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
-
+# #################Languages####################
 hello_array.each_slice(2) do |language, hello|
 	if country = Country.find_by_language(language)
 		Phrase.create(hello: hello, country_id: country.id)
 	end
 end
+#################Cuisines####################
+cuisine_data = []
+CSV.foreach ("db/cuisine.csv") do |row|
+  cuisine_data << row
+end
+data = cuisine_data.flatten
+paired = data.each_slice(2)
+paired.each do |p|
+  if @country = Country.find_by(name: p[0])
+  	@country.update(cuisine: p[1])
+  end
+end
+
 
 ################ THIS SEEDS THE IMAGES ################ 
 require 'flickr'
