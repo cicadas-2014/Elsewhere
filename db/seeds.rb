@@ -275,7 +275,8 @@ end
 
 
 
-############### THIS SEEDS THE IMAGES ################ 
+################ THIS SEEDS THE IMAGES ################ 
+
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
 
