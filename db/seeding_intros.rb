@@ -1,4 +1,4 @@
-require 'Nokogiri'
+require 'nokogiri'
 require 'csv'
 
 
@@ -242,149 +242,124 @@ require 'csv'
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
-        
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
-  elsif name == ("Honduras")
+  
+   elsif name == ("Honduras")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Qatar")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Pakistan")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
-
+  
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Malawi")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Spain")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Algeria")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Dominican_Republic")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
     elsif name == ("Bolivia")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
-        
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
+      
   elsif name == ("Puerto_Rico")
-      @intros << ("#{country.name}""Sunrise and sunset are both worth waiting for when you are in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. Its easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
+      @i1 = "Sunrise and sunset are both worth waiting for when you are in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight."
+      @i2 = "Its easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water."
   elsif name == ("Mongolia")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p')
-   
 
           @i1 = intro1[0].content
-        
-      @intros << ("#{country.name}""#{@i1}")
+          @i2 = ""
+
   elsif name == ("Netherlands")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
   elsif name == ("Nicaragua")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
         
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
   elsif name == ("Mexico")
     doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
         intro1 = doc.css('#content p:eq(1)')
         intro2 = doc.css('#content p:eq(2)')
-   
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
-        
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
+    
   elsif name == ("Russian_Federation")
-      @intros << ("#{country.name}""The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
+      @i1 = "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers."
+      @i2 = "Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible."
   else
     p name
     p country
-        doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+        doc = Nokogiri::XML(open("http://wikitravel.org/en/"+ name))
         intro1 =  doc.css('#mw-content-text table tr:eq(1) p:eq(2)')
         intro2 =  doc.css('#mw-content-text table tr:eq(1) p:eq(3)')
 
           @i1 = intro1[0].content
           @i2 = intro2[0].content
-
-      @intros << ("#{country.name}""#{@i1} #{@i2}")
   end
-end 
 
-
-CSV.open("db/intro.csv") do |csv|
-  csv << @intros
+CSV.open("db/intro.csv", "wb") do |csv|
+  csv << [country, "#{@i1} #{@i2}"]
 end
+
+end 
