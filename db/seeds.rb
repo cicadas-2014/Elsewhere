@@ -1,4 +1,4 @@
-require 'CSV'
+# require 'CSV'
 require 'iso_country_codes'
 require 'money'
 # require 'Nokogiri'
