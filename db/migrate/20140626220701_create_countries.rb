@@ -10,6 +10,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string :two_character_code
       t.string :three_character_code
       t.string :currency
+      t.boolean :is_malaria_hotspot
       t.timestamps
     end
   end

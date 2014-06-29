@@ -1,7 +1,7 @@
-# require 'CSV'
+require 'csv'
 require 'iso_country_codes'
 require 'money'
-# require 'Nokogiri'
+require 'Nokogiri'
 
 
 def two_code(country_name)
@@ -233,34 +233,53 @@ russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
 
 
-############### THIS SEEDS THE IMAGES ################ 
-require 'flickr'
-flickr = Flickr.new(ENV["FLICKR_KEY"])
+# # ############### THIS SEEDS THE IMAGES ################ 
+# # require 'flickr'
+# # flickr = Flickr.new(ENV["FLICKR_KEY"])
 
-Country.all.each do |country|	
-	photos = flickr.photos_search(
-		content_type: 1, 
-		safe_search: 1, 
-		tags: "#{country.name}, travel, beautiful",
-		tag_mode: "all", 
-		privacy_filter: 1, 
-		sort: "interestingness-desc",
-		media: "photos",
-		)
+# # Country.all.each do |country|	
+# # 	photos = flickr.photos_search(
+# # 		content_type: 1, 
+# # 		safe_search: 1, 
+# # 		tags: "#{country.name}, travel, beautiful",
+# # 		tag_mode: "all", 
+# # 		privacy_filter: 1, 
+# # 		sort: "interestingness-desc",
+# # 		media: "photos",
+# # 		)
 	
-	photos[0..3].each do |photo|
-		country.images << Image.create(url: photo.source)
-	end
+# # 	photos[0..3].each do |photo|
+# # 		country.images << Image.create(url: photo.source)
+# # 	end
+# # end
+
+# ############THIS SEEDS POLITICAL RATING###########
+
+poli_ratings = []
+data = File.open('db/politicalstability.csv')
+CSV.foreach(data) do |row|
+	poli_ratings << [row[0],row[1].gsub(/\t/,'').to_f]
 end
 
-#############THIS SEEDS POLITICAL RATING###########
+poli_ratings.each do |rating|
+	code = IsoCountryCodes.search_by_name(rating[0]).first.alpha3
+	country = Country.find_by(three_character_code: code)
+	if country
+		country.update_attributes(political_stability: rating[1])
+	end
+end
+#####################Seeds Vaccines###############
 
-# poli_ratings = []
-# data = File.open('db/politicalstability.csv')
-# CSV.foreach(data) do |row|
-# 	poli_ratings << [row[0],row[1].gsub(/\t/,'').to_f]
-# end
-
-# poli_ratings.each do |rating|
-# 	Country.find_by(name: rating[0]).update_attributes(political_stability: rating[1])
-# end
+vaccine_data = File.open('db/vaccines.csv')
+	vaccines = []
+	CSV.foreach(vaccine_data) do |row|
+		vaccines << row
+	end
+	vaccines.flatten!
+	p vaccines
+Country.all.each do |country|
+	if vaccines.include?(country.name)
+		country.update_attributes(is_malaria_hotspot: true)
+	end
+end
+				
