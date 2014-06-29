@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140626220722) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "countries", force: true do |t|
     t.string   "name"
     t.string   "common_name"
@@ -24,7 +27,11 @@ ActiveRecord::Schema.define(version: 20140626220722) do
     t.string   "three_character_code"
     t.string   "language_code"
     t.string   "currency"
+<<<<<<< HEAD
+    t.boolean  "is_malaria_hotspot"
+=======
     t.string   "cuisine"
+>>>>>>> 45ab9e8b31d02476d8a2fb432b2663964e5f9058
     t.text     "intro"
     t.datetime "created_at"
     t.datetime "updated_at"

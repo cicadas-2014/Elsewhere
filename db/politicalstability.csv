@@ -11,13 +11,13 @@ Iceland,1.22
 Qatar,1.21
 Barbados,1.20	
 Vanuatu,1.18
-The Bahamas,1.18
+Bahamas,1.18
 Netherlands,1.17
 Sweden,1.16	
 Botswana,1.11
 Canada,1.09
 Dominica,1.06	 
-Slovak Republic,1.06	
+Slovakia,1.06	
 San Marino,1.06	
 Czech Republic,1.04	
 Malta,1.04
@@ -36,18 +36,17 @@ Slovenia,0.92
 Saint Lucia,0.91
 Denmark,0.90	 
 Belgium,0.90	
-UAE,0.88	
+United Arab Emirates,0.88	
 Saint Vincent and the Grenadines,0.87
 Australia,0.87
 Bhutan,0.81	
-Cape Verde,0.78
 Germany,0.77	
 Seychelles,0.75	 
 Lithuania,0.75	
 Portugal,0.75
 Uruguay,0.71	 
 Hungary,0.67	
-USA,0.63
+United States,0.63
 Cyprus,0.63
 Costa Rica,0.63	
 Oman,0.62	
@@ -77,7 +76,7 @@ Equatorial Guinea,0.21
 Belize,0.18	
 Kuwait,0.18	 
 Djibouti,0.17	 
-South Korea,0.17	 
+Korea,0.17	 
 Trinidad and Tobago,0.11 
 Armenia,0.11	
 Jamaica,0.10	 
@@ -85,8 +84,7 @@ Ghana,0.10
 Suriname,0.08	 
 Romania,0.07	 
 Argentina,0.07	
-Brazil,0.07	 
-Laos,0.04	 
+Brazil,0.07	  
 Tanzania,0.03	
 Belarus,0.02	
 Moldova,0.02	 
@@ -96,8 +94,7 @@ Malaysia,0.00
 South Africa,0.00	
 Spain,-0.01	 
 Fiji,-0.04	
-Malawi,-0.07	
-North Korea,-0.10	 
+Malawi,-0.07		 
 Ukraine,-0.10	 
 Cambodia,-0.14	
 Panama,-0.15	 
@@ -119,8 +116,7 @@ Jordan,-0.42
 Togo,-0.42
 Macedonia,-0.44	
 Saudi Arabia,-0.46	 
-Morocco,-0.46	 
-Congo-Brazzaville,-0.48	
+Morocco,-0.46	 	
 Guyana,-0.48	 
 Liberia,-0.50	 
 Bolivia,-0.50	 
@@ -154,7 +150,6 @@ Chad,-1.07
 Israel,-1.07	
 Mauritania,-1.13	 
 Bahrain,-1.13	 
-Kosovo,-1.15
 Philippines,-1.16	
 Tajikistan,-1.16	
 Niger,-1.17	 
@@ -162,7 +157,6 @@ Turkey,-1.19
 Thailand,-1.21	 
 South Sudan,-1.22	 
 India,-1.25	 
-Ivory Coast,-1.26	
 Guinea,-1.28	
 Kenya,-1.29	 
 Iran,-1.32	

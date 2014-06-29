@@ -1,3 +1,4 @@
+
 =begin
 SEEDS FILE CURRENTLY TAKES CARE OF:
 country names, country wiki info, flickr images, official currency, corruption index, official language
@@ -9,6 +10,7 @@ require 'money'
 require 'nokogiri'
 require 'csv'
 require 'flickr'
+
 
 def two_code(country_name)
 	code = IsoCountryCodes.search_by_name(country_name).first.alpha2
@@ -237,6 +239,7 @@ end
 
 
 
+
 require 'CSV'
 
 countries = []
@@ -353,38 +356,39 @@ Country.order(name: :asc).each do |country|
 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
 				intro1 = doc.css('#content p:eq(1)')
 	      intro2 = doc.css('#content p:eq(2)')
+
 	 
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 				
-		country.update(intro: "#{@i1} #{@i2}")
-	elsif name == ("Puerto_Rico")
-			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
-	elsif name == ("Mongolia")
-		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 = doc.css('#content p')
+# 		country.update(intro: "#{@i1} #{@i2}")
+# 	elsif name == ("Puerto_Rico")
+# 			country.update(intro: "Sunrise and sunset are both worth waiting for when you're in Puerto Rico. The pinks and yellows that hang in the early-morning sky are just as compelling as the sinewy reds and purples that blend into the twilight. It's easy to compare them, as Puerto Rico is so narrow that you can easily have breakfast in Fajardo, looking eastward over the boats headed to enchanted islands like Vieques and Culebra, then settle down for a lobster dinner in Rincon as the sun is sinking into the inky-blue water.")
+# 	elsif name == ("Mongolia")
+# 		doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 = doc.css('#content p')
 	 
 
-					@i1 = intro1[0].content
+# 					@i1 = intro1[0].content
 				
-			country.update(intro: "#{@i1}")
-	elsif name == ("Russian_Federation")
-			country.update(intro: "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
-	else
-		p name
-		p country.name
-				doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
-				intro1 =  doc.css('#mw-content-text table tr:eq(1) p:eq(2)')
-	      intro2 =  doc.css('#mw-content-text table tr:eq(1) p:eq(3)')
+# 			country.update(intro: "#{@i1}")
+# 	elsif name == ("Russian_Federation")
+# 			country.update(intro: "The grandeur of the Czars, the brutality of Soviet regime, the literary masterpieces baring the Russian soul, and the onion domes of the cathedrals all have captivated the imagination of generations of travellers. Now Russia is shedding its Soviet past and creating itself anew. The palaces, cathedrals, and statues are all still there. But today's Russia is cynical and hip and full of contrasts. Trendy art galleries replaced the Soviet factories in many cities and fierce capitalism has created the wildly rich. More billionaires live in Moscow today than anywhere else, where restaurants, nightclubs and shops have taken luxury to a new level. In the new Russia, it seems anything is possible.")
+# 	else
+# 		p name
+# 		p country.name
+# 				doc = Nokogiri::XML(open('http://wikitravel.org/en/'+ name))
+# 				intro1 =  doc.css('#mw-content-text table tr:eq(1) p:eq(2)')
+# 	      intro2 =  doc.css('#mw-content-text table tr:eq(1) p:eq(3)')
 
-					@i1 = intro1[0].content
-					@i2 = intro2[0].content
+# 					@i1 = intro1[0].content
+# 					@i2 = intro2[0].content
 
 				
-			country.update(intro: "#{@i1} #{@i2}")
-	end
-end	
+# 			country.update(intro: "#{@i1} #{@i2}")
+# 	end
+# end	
 
 
 # #################Common Names####################
@@ -394,6 +398,7 @@ usa = Country.find_by(name: 'United States')
 usa.update(common_name: 'United States of America')
 russia = Country.find_by(name: 'Russian Federation')
 russia.update(common_name:'Russia')
+
 
 # #################Languages####################
 hello_array.each_slice(2) do |language, hello|
@@ -419,21 +424,53 @@ end
 ################ THIS SEEDS THE IMAGES ################ 
 flickr = Flickr.new(ENV["FLICKR_KEY"])
 
-Country.all.each do |country|	
-	photos = flickr.photos_search(
-		content_type: 1, 
-		safe_search: 1, 
-		tags: "#{country.name}, travel, beautiful",
-		tag_mode: "all", 
-		privacy_filter: 1, 
-		sort: "interestingness-desc",
-		media: "photos",
-		)
+
+# # Country.all.each do |country|	
+# # 	photos = flickr.photos_search(
+# # 		content_type: 1, 
+# # 		safe_search: 1, 
+# # 		tags: "#{country.name}, travel, beautiful",
+# # 		tag_mode: "all", 
+# # 		privacy_filter: 1, 
+# # 		sort: "interestingness-desc",
+# # 		media: "photos",
+# # 		)
 	
-	photos[0..3].each do |photo|
-		country.images << Image.create(url: photo.source)
+# # 	photos[0..3].each do |photo|
+# # 		country.images << Image.create(url: photo.source)
+# # 	end
+# # end
+
+# ############THIS SEEDS POLITICAL RATING###########
+
+poli_ratings = []
+data = File.open('db/politicalstability.csv')
+CSV.foreach(data) do |row|
+	poli_ratings << [row[0],row[1].gsub(/\t/,'').to_f]
+end
+
+poli_ratings.each do |rating|
+	code = IsoCountryCodes.search_by_name(rating[0]).first.alpha3
+	country = Country.find_by(three_character_code: code)
+	if country
+		country.update_attributes(political_stability: rating[1])
 	end
 end
+#####################Seeds Vaccines###############
+
+vaccine_data = File.open('db/vaccines.csv')
+	vaccines = []
+	CSV.foreach(vaccine_data) do |row|
+		vaccines << row
+	end
+	vaccines.flatten!
+	p vaccines
+Country.all.each do |country|
+	if vaccines.include?(country.name)
+		country.update_attributes(is_malaria_hotspot: true)
+	end
+end
+
 
 ################ THIS SEEDS THE CORRUPTION ################ 
 
@@ -488,3 +525,4 @@ Country.all.each do | country |
 end
 
 # EOF
+
