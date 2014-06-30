@@ -8,8 +8,10 @@ target_language = []
 
 countries = Country.all
 countries.each do | country | 
-	target_language << country.id 
-	target_language << country.language_code
+	unless country.language_code.nil?
+		target_language << country.id 
+		target_language << country.language_code.downcase
+	end
 end
 
 

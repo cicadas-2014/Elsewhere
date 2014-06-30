@@ -24,10 +24,10 @@ require_relative "seeds/common_names"
 require_relative "seeds/language"
 require_relative "seeds/country_intros"
 require_relative "seeds/cuisine"
-# require_relative "seeds/country_images"
+require_relative "seeds/country_images"
 require_relative "seeds/political_stability"
 require_relative "seeds/vaccines"
-# require_relative "seeds/phrases"
+require_relative "seeds/phrases"
 require_relative "seeds/corruption"
 
 
