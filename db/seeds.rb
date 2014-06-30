@@ -19,16 +19,16 @@ def currency(country_name)
 	currency = Money.new(1000,currency_code).currency.name
 end
 
-require_relative "country_names"
-require_relative "common_names"
-require_relative "language"
-require_relative "country_intros"
-require_relative "cuisine"
-require_relative "country_images"
-require_relative "political_stability"
-require_relative "vaccines"
-require_relative "phrases"
-require_relative "corruption"
+require_relative "seeds/country_names"
+require_relative "seeds/common_names"
+require_relative "seeds/language"
+require_relative "seeds/country_intros"
+require_relative "seeds/cuisine"
+# require_relative "seeds/country_images"
+require_relative "seeds/political_stability"
+require_relative "seeds/vaccines"
+# require_relative "seeds/phrases"
+require_relative "seeds/corruption"
 
 
 
