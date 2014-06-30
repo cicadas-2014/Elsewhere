@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 gem 'rails_12factor'
@@ -56,6 +55,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'faker'

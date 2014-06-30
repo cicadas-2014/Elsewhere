@@ -5,6 +5,9 @@ class ElsewhereController < ApplicationController
   def index
   end
 
+  def direction
+  end
+
   def show
     search = params[:search].capitalize
     if search == ("Russia" || "United States of America")
@@ -20,5 +23,6 @@ class ElsewhereController < ApplicationController
       render 'show'
     end
   end
+
 
 end
