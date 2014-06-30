@@ -31,6 +31,24 @@
 			<p><%=@country.malaria?%></p>
 		</div>
 		<% end %>
+		<% if @country.cuisine %>
+		<div class="card" id="cuisine">
+			<h2>Cuisine:</h2>
+			<p><%=@country.cuisine%></p>
+		</div>
+		<% end %>
+		<% if @country.phrases %>
+		<div class="card" id="phrases">
+			<h2>Local Lingo:</h2>
+		<ul>
+			<li>Hello: 		<%=@country.phrases.first.hello%></li>
+			<li>Please: 	<%=@country.phrases.first.please%></li>
+			<li>Thanks: 	<%=@country.phrases.first.thanks%></li>
+			<li>Bathroom: <%=@country.phrases.first.bathroom%></li>
+		</ul>
+		</div>
+		<% end %>
+
 		<div class="demo"></div>
 	</div>
 </div>

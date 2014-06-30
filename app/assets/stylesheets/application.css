@@ -13,6 +13,14 @@ div.show_images {
 div.fact_cards div {
 }
 
+div #phrases {
+  text-align: left;
+}
+
+#phrases ul {
+  list-style-type: none;
+}
+
 div.demo {
 
 }
@@ -36,7 +44,7 @@ body {
 
 .results h3 {
   font-size: 60px;
-  color: white;
+  color: black;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
 }
@@ -194,7 +202,7 @@ div.card {
   padding: 10px;
   width: 300px;
   display: inline-block;
-  height: 100px;
+  height: auto;
   background-color: white;
 }
 
