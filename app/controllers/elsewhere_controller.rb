@@ -9,7 +9,7 @@ class ElsewhereController < ApplicationController
   end
 
   def show
-    search = params[:search].capitalize
+    search = params[:search].split(" ").map { |word| word.capitalize }.join(" ")
     if search == ("Russia" || "United States of America")
       @country = Country.find_by(common_name: search)
     elsif search.length == 2
