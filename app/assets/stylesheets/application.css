@@ -76,6 +76,11 @@ form input[type=text] {
   color: black;
 }
 
+form {
+  position: relative;
+  top: 50%;
+}
+
 form input[type=submit] {
   color: black;
   background-color: white;
@@ -83,28 +88,34 @@ form input[type=submit] {
   font-size: 12px;
   border: 2px solid black;
   border-radius: 3px;
-
 }
 
 header {
   background-color: #202930 ;
-  height: auto;
+  height: 100px;
   width: 100%;
   font-family: pt serif;
   position: absolute;
   top: 0px;
   left: 0px;
   font-family: 'Quicksand',sans-serif;
-  font-size: 25px;
   color: white;
   text-decoration: none;
   text-shadow: 0 4px 0 rgba(0,0,0,.15);
   padding: 10px;
+  position: fixed;
 }
 
 header a {
   text-decoration: none;
   color: white;
+  font-size: 3em;
+  margin-top: 10px;
+  padding-top: 30px;
+}
+
+p#slogan {
+  font-size: 1em;
 }
 
 #title {
@@ -133,14 +144,14 @@ header p {
 }
 .search {
 
-  position: absolute;
+  position: relative;
   right: 5%;
-  top: 5px;
+  top: -50px;
   border-radius: 1px;
   text-align: center;
   font-family: 'Quicksand';
   color: white;
-  margin: 10px;
+  float: right;
 }
 
 input#search {
