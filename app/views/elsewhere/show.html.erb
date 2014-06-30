@@ -1,6 +1,56 @@
 <div class = "results">
 <div id='results_title'>
-	<p><strong><%= @country.name %></strong></p>
+	
+</div>
+
+
+<div class="title">
+	<h3><%= @country.name %></h3>
+</div>
+
+<div class="info">
+	<div class="fun_fact">
+		<%=@country.intro%>
+	</div>
+	<div class="fact_cards">
+		<div class="card">
+			<h2>Language:</h2>
+			<p><%=@country.display_language%></p>
+		</div>
+		<div class="card">
+			<h2>Currency:</h2>
+			<p><%=@country.currency%></p>
+		</div>
+		<div class="card">
+			<h2>Politics:</h2>
+			<p>Political Stability: <%=@country.political_rating%></p>
+		</div>
+		<% if @country.is_malaria_hotspot %>
+		<div class="card" id="malaria">
+			<h2>Health:</h2>
+			<p><%=@country.malaria?%></p>
+		</div>
+		<% end %>
+		<% if @country.cuisine %>
+		<div class="card" id="cuisine">
+			<h2>Cuisine:</h2>
+			<p><%=@country.cuisine%></p>
+		</div>
+		<% end %>
+		<% if @country.phrases %>
+		<div class="card" id="phrases">
+			<h2>Local Lingo:</h2>
+		<ul>
+			<li>Hello: 		<%=@country.phrases.first.hello%></li>
+			<li>Please: 	<%=@country.phrases.first.please%></li>
+			<li>Thanks: 	<%=@country.phrases.first.thanks%></li>
+			<li>Bathroom: <%=@country.phrases.first.bathroom%></li>
+		</ul>
+		</div>
+		<% end %>
+
+		<div class="demo"></div>
+	</div>
 </div>
 
 <div class="show_images">
@@ -19,10 +69,7 @@
 
 
 
-<h2>Fun Facts</h2>
-<div class="fun_fact">
-<%=@country.intro%>
-</div>
-<h2>Currency:</h2><%=@country.currency%>
-</div>
+
+
+
 
