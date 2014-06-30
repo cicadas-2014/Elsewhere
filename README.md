@@ -17,4 +17,4 @@ Retros:
 * Set up pg ahead of time instead of using SQLite3 - Everyone
 * Everyone gets here on time when we agree on a time - Everyone
 * Learning Travis CI beforehand - someone who knows it really well
-* more upfront research on data availability and standardizatio (i.e. country codes) - Everyone
+* more upfront research on data availability and standardization (i.e. country codes) - Everyone
